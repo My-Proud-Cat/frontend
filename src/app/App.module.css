@@ -1,3 +1,7 @@
+@import url('../styles/normalize.module.css');
+@import url('../styles/reset.module.css');
+@import url('../styles/theme.module.css');
+
 .App {
   margin: 0 auto;
   max-width: 1980px;
