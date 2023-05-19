@@ -2,6 +2,7 @@
   margin: 0 auto;
   max-width: 1024px;
   display: flex;
+  flex-flow: column nowrap;
   justify-content: center;
   padding: 40px 0;
 }
@@ -27,28 +28,12 @@
   font-size: 14px;
 }
 
-.line:after {
+.line::after {
   content: '';
-  border: 1px solid var(--gray-300);
+  border: 1px solid var(--gray-200);
   width: 1024px;
   position: absolute;
   bottom: 0;
   left: 0;
   display: flex;
-}
-
-.sortButton {
-  background-color: white;
-  border: none;
-  border-top: 1px solid var(--gray-300);
-  border-left: 1px solid var(--gray-300);
-  border-right: 1px solid var(--gray-300);
-  border-radius: 5px 5px 0 0;
-  padding: 8px;
-  margin-right: 20px;
-  font-size: 12px;
-}
-
-.sortButton:first-child {
-  margin-right: 8px;
 }

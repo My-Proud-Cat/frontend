@@ -1,5 +1,7 @@
 import styles from './PictureList.module.css';
 import Article from 'components/Common/Article/Article';
+import Pagination from 'components/Common/Pagination/Pagination';
+import Sort from 'components/Common/Sort/Sort';
 
 function PictureList() {
   return (
@@ -11,13 +13,11 @@ function PictureList() {
 
         <p className={styles.line}></p>
 
-        <div className={styles.floatRight}>
-          <button className={styles.sortButton}>최신순</button>
-          <button className={styles.sortButton}>추천순</button>
-        </div>
+        <Sort />
       </div>
 
       <Article />
+      <Pagination />
     </div>
   );
 }
