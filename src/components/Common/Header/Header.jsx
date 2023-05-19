@@ -1,4 +1,13 @@
+import { Link } from 'react-router-dom';
 import styles from './Header.module.css';
+import styled from 'styled-components';
+import { hover } from '@testing-library/user-event/dist/hover';
+
+const LinkHover = styled(Link)`
+  &:hover {
+    color: var(--primary);
+  }
+`;
 
 function Header() {
   return (
@@ -7,14 +16,14 @@ function Header() {
 
       <div className={styles.nav}>
         <div className={styles.category}>
-          <p>인생샷</p>
-          <p>커뮤니티</p>
-          <p>유기묘 후원</p>
+          <LinkHover to="/">인생샷</LinkHover>
+          <LinkHover to="/">커뮤니티</LinkHover>
+          <LinkHover to="/">유기묘 후원</LinkHover>
         </div>
 
         <div className={styles.category}>
-          <p>로그인</p>
-          <p>회원가입</p>
+          <LinkHover to="/">로그인</LinkHover>
+          <LinkHover to="/">회원가입</LinkHover>
         </div>
       </div>
     </div>
