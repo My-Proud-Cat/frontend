@@ -5,6 +5,7 @@ import Sort from 'components/Common/Sort/Sort';
 import { useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import { getPictureList } from '@store/getPictureListData';
+import { ReactComponent as Banner } from 'assets/banner.svg';
 
 function PictureList() {
   const pictureListData = useRecoilValue(getPictureList);
@@ -13,6 +14,7 @@ function PictureList() {
 
   return (
     <>
+      <Banner />
       <div className={styles.layout}>
         <div className={styles.position}>
           <div>
