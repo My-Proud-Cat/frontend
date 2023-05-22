@@ -2,27 +2,14 @@ import styles from './PictureList.module.css';
 import Article from 'components/Common/Article/Article';
 import Pagination from 'components/Common/Pagination/Pagination';
 import Sort from 'components/Common/Sort/Sort';
-import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { useRecoilValue } from 'recoil';
+import { getPictureList } from '@store/getPictureListData';
 
 function PictureList() {
-  const [posts, setPosts] = useState([]);
-  const [error, setError] = useState(null);
+  const pictureListData = useRecoilValue(getPictureList);
 
-  const getDatas = async () => {
-    try {
-      setError(null);
-
-      const response = await axios.get('http://localhost:3001/picture');
-      setPosts(response.data);
-    } catch (e) {
-      setError(e);
-    }
-  };
-
-  useEffect(() => {
-    getDatas();
-  }, []);
+  const [posts, setPosts] = useState([...pictureListData]);
 
   return (
     <>

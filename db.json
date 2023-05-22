@@ -9,7 +9,8 @@
         "userId": ""
       },
       "hits": 1,
-      "like": 5
+      "like": 5,
+      "createdAt": "2023-05-20"
     },
     {
       "id": 2,
@@ -20,7 +21,8 @@
         "userId": ""
       },
       "hits": 1,
-      "like": 5
+      "like": 5,
+      "createdAt": "2023-05-21"
     },
     {
       "id": 3,
@@ -31,7 +33,8 @@
         "userId": ""
       },
       "hits": 1,
-      "like": 5
+      "like": 5,
+      "createdAt": "2023-05-22"
     },
     {
       "id": 4,
@@ -42,7 +45,8 @@
         "userId": ""
       },
       "hits": 1,
-      "like": 5
+      "like": 5,
+      "createdAt": "2023-05-23"
     }
   ]
 }
