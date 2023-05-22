@@ -13,3 +13,10 @@
 .sortButton:first-child {
   margin-right: 8px;
 }
+
+.sortButton:hover {
+  /* background-color: var(--secondary);
+  color: white; */
+
+  color: var(--primary);
+}

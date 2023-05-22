@@ -28,6 +28,10 @@
   font-size: 14px;
 }
 
+.writeButton:hover {
+  color: var(--primary);
+}
+
 .line::after {
   content: '';
   border: 1px solid var(--gray-200);
