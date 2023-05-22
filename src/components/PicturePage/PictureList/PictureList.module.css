@@ -37,3 +37,9 @@
   left: 0;
   display: flex;
 }
+
+.post {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 45.5px;
+}

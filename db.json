@@ -1,0 +1,48 @@
+{
+  "picture": [
+    {
+      "id": 1,
+      "title": "제목입니다1",
+      "content": "내용입니다1",
+      "user": {
+        "nickName": "임시 닉네임",
+        "userId": ""
+      },
+      "hits": 1,
+      "like": 5
+    },
+    {
+      "id": 2,
+      "title": "제목입니다2",
+      "content": "내용입니다2",
+      "user": {
+        "nickName": "임시 닉네임",
+        "userId": ""
+      },
+      "hits": 1,
+      "like": 5
+    },
+    {
+      "id": 3,
+      "title": "제목입니다3",
+      "content": "내용입니다3",
+      "user": {
+        "nickName": "임시 닉네임",
+        "userId": ""
+      },
+      "hits": 1,
+      "like": 5
+    },
+    {
+      "id": 4,
+      "title": "제목입니다4",
+      "content": "내용입니다4",
+      "user": {
+        "nickName": "임시 닉네임",
+        "userId": ""
+      },
+      "hits": 1,
+      "like": 5
+    }
+  ]
+}
