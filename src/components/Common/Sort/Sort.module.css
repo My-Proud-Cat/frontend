@@ -15,8 +15,6 @@
 }
 
 .sortButton:hover {
-  /* background-color: var(--secondary);
-  color: white; */
-
-  color: var(--primary);
+  background-color: var(--primary);
+  color: white;
 }

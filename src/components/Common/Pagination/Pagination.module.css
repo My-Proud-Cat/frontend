@@ -1,9 +1,35 @@
 .layout {
   margin: 0 auto;
-  margin-top: 30px;
+  margin-top: 40px;
+  display: flex;
 }
 
-.pagination {
+.paginate {
   display: flex;
   flex-flow: row nowrap;
+  gap: 4px;
+  margin: 0 4px;
+}
+
+.pageNumber {
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+}
+
+.pageNumber[aria-current] {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  color: white;
+  background-color: var(--primary);
+}
+
+.pageNumber:hover {
+  /* color: var(--primary); */
+}
+
+.paginationButton {
+  background-color: transparent;
+  border: none;
 }
