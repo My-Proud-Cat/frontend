@@ -1,6 +1,6 @@
 import styles from './PictureWirte.module.css';
 import Banner from 'components/Common/Banner/Banner';
-import FormInput from 'components/Common/FormInput/FormInput';
+import WriteInput from 'components/Common/WriteInput/WriteInput';
 import SubmitButton from 'components/Common/SubmitButton/SubmitButton';
 
 function PictureWirte() {
@@ -9,7 +9,8 @@ function PictureWirte() {
       <Banner />
 
       <div className={styles.layout}>
-        <FormInput />
+        <WriteInput />
+
         <SubmitButton />
       </div>
     </>

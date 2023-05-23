@@ -1,7 +1,7 @@
 import { string } from 'prop-types';
-import styles from './FormInput.module.css';
+import styles from './WriteInput.module.css';
 
-function FormInput() {
+function WriteInput() {
   return (
     <>
       <p>글 작성</p>
@@ -24,14 +24,14 @@ function FormInput() {
   );
 }
 
-export default FormInput;
+export default WriteInput;
 
-FormInput.defaultProps = {
+WriteInput.defaultProps = {
   type: 'text',
   placeholder: string,
 };
 
-FormInput.propTypes = {
+WriteInput.propTypes = {
   type: string,
   label: string,
   placeholder: string,
