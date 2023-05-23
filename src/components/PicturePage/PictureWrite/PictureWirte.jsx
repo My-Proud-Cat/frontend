@@ -1,7 +1,12 @@
+import Banner from 'components/Common/Banner/Banner';
 import React from 'react';
 
-const PictureWirte = () => {
-  return <div></div>;
-};
+function PictureWirte() {
+  return (
+    <div>
+      <Banner />
+    </div>
+  );
+}
 
 export default PictureWirte;

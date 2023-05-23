@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import { getPictureList } from '@store/getPictureListData';
 import { ReactComponent as Banner } from 'assets/banner.svg';
+import { useNavigate } from 'react-router-dom';
 
 function PictureList() {
   const pictureListData = useRecoilValue(getPictureList);
@@ -24,6 +25,8 @@ function PictureList() {
     return currentPosts;
   };
 
+  const navigate = useNavigate();
+
   return (
     <>
       <Banner className={styles.banner} />
@@ -31,7 +34,14 @@ function PictureList() {
       <div className={styles.layout}>
         <div className={styles.position}>
           <div>
-            <button className={styles.writeButton}>글쓰기</button>
+            <button
+              className={styles.writeButton}
+              onClick={() => {
+                navigate('/write');
+              }}
+            >
+              글쓰기
+            </button>
           </div>
 
           <p className={styles.line}></p>
