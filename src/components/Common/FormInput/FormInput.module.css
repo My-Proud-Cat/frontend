@@ -1,6 +1,7 @@
 .layout {
   display: flex;
   flex-flow: row nowrap;
+  margin-bottom: 50px;
 }
 
 .input {

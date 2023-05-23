@@ -1,0 +1,13 @@
+.layout {
+  display: flex;
+  justify-content: center;
+}
+
+.submitButton {
+  width: 260px;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--primary);
+  color: white;
+}
