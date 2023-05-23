@@ -7,11 +7,6 @@
   padding: 40px 0;
 }
 
-.banner {
-  margin: 0 auto;
-  width: 1924px;
-}
-
 .position {
   display: flex;
   flex-flow: row nowrap;

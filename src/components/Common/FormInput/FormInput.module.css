@@ -1,0 +1,75 @@
+.layout {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.input {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 654px;
+  margin-top: 30px;
+}
+
+.title {
+  border: 1px solid var(--gray-300);
+  border-radius: 5px;
+  height: 50px;
+  padding-left: 15px;
+  font-size: 14px;
+}
+
+.title:focus {
+  outline: none;
+}
+
+.title::placeholder,
+.content::placeholder {
+  font-size: 14px;
+  color: var(--gray-300);
+  opacity: 1; /* 파이어폭스에서 흐리게 보이는 현상 해결 방안 */
+}
+
+.content {
+  border: 1px solid var(--gray-300);
+  border-radius: 5px;
+  margin-top: 30px;
+  height: 245px;
+  padding-left: 15px;
+  padding-top: 15px;
+  font-size: 14px;
+  resize: none;
+}
+
+.content:focus {
+  outline: none;
+}
+
+.fileUpload {
+  margin-top: 30px;
+  margin-left: 30px;
+  border: 5px dotted var(--secondary);
+  background-color: transparent;
+  display: flex;
+  border-radius: 5px;
+}
+
+.fileUpload label {
+  color: var(--gray-300);
+  width: 340px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.fileUpload input[type='file'] {
+  position: absolute;
+  width: 1;
+  height: 1;
+  padding: 0;
+  margin: -1;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
