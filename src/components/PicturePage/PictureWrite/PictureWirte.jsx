@@ -1,11 +1,13 @@
+import styles from './PictureWirte.module.css';
 import Banner from 'components/Common/Banner/Banner';
-import React from 'react';
 
 function PictureWirte() {
   return (
-    <div>
+    <>
       <Banner />
-    </div>
+
+      <div className={styles.layout}></div>
+    </>
   );
 }
 

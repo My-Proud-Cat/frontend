@@ -2,10 +2,10 @@ import styles from './PictureList.module.css';
 import Article from 'components/Common/Article/Article';
 import Pagination from 'components/Common/Pagination/Pagination';
 import Sort from 'components/Common/Sort/Sort';
+import Banner from 'components/Common/Banner/Banner';
 import { useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import { getPictureList } from '@store/getPictureListData';
-import { ReactComponent as Banner } from 'assets/banner.svg';
 import { useNavigate } from 'react-router-dom';
 
 function PictureList() {
@@ -29,7 +29,7 @@ function PictureList() {
 
   return (
     <>
-      <Banner className={styles.banner} />
+      <Banner />
 
       <div className={styles.layout}>
         <div className={styles.position}>
