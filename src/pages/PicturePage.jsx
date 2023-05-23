@@ -1,8 +1,7 @@
-import React from 'react';
-import PictureDetail from '@/components/PicturePage/PictureDetail/PictureDetail';
+import PictureList from 'components/PicturePage/PictureList/PictureList';
 
 const PicturePage = () => {
-  return <PictureDetail />;
+  return <PictureList />;
 };
 
 export default PicturePage;

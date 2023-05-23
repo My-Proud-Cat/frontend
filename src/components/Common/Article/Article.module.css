@@ -1,0 +1,64 @@
+.layout {
+  padding: 40px 0;
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 46px;
+  font-size: 14px;
+}
+
+.thumbnail {
+  border: 1px solid var(--gray-300);
+  width: 220px;
+  height: 150px;
+  margin-bottom: 13px;
+}
+
+.title {
+  display: block;
+  font-size: 16px;
+  width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+.content {
+  display: block;
+  margin: 13px 0;
+  width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.position {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  position: relative;
+  padding-top: 13px;
+  font-size: 12px;
+}
+
+.position::before {
+  content: '';
+  border: 1px solid var(--gray-200);
+  position: absolute;
+  width: 220px;
+  top: 0;
+  left: 0;
+}
+
+.numbers {
+  display: flex;
+  gap: 10px;
+}
+
+.hits {
+  color: var(--gray-400);
+}
+
+.like {
+  color: var(--gray-400);
+}
