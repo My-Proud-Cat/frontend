@@ -1,9 +1,9 @@
 import styles from './SubmitButton.module.css';
 
-function SubmitButton() {
+function SubmitButton({ ...restProps }) {
   return (
     <div className={styles.layout}>
-      <button type="submit" className={styles.submitButton}>
+      <button className={styles.submitButton} {...restProps}>
         등록
       </button>
     </div>

@@ -30,9 +30,3 @@ WriteInput.defaultProps = {
   type: 'text',
   placeholder: string,
 };
-
-WriteInput.propTypes = {
-  type: string,
-  label: string,
-  placeholder: string,
-};
