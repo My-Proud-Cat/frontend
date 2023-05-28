@@ -1,7 +1,7 @@
 import React from 'react';
 
-const PictureDetail = () => {
+function PictureDetail() {
   return <div></div>;
-};
+}
 
 export default PictureDetail;
