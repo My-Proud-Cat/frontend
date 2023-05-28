@@ -9,15 +9,15 @@ function PictureWirte() {
     await axios
       .post('http://localhost:3001/picture', {
         title: '임시 제목',
-        content: '임시 내용',
+        describe: '임시 내용',
         img: '',
         user: {
-          nickName: '임시 닉네임',
-          userId: '임시 아이디',
+          nickname: '임시 닉네임',
+          user_id: '임시 아이디',
         },
-        hits: 2,
+        view: 2,
         like: 9,
-        createdAt: '',
+        created_at: '',
       })
       .then((error) => {
         console.log(error);
