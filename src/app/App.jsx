@@ -11,13 +11,13 @@ function App() {
   return (
     <div className={styles.App}>
       <Header />
+
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
 
         <Route path="/" element={<PicturePage />} />
         <Route path="/write" element={<PictureWirte />} />
-        <Route path="/detail" element={<PictureWirte />} />
         <Route path="/detail" element={<PictureDetail />} />
       </Routes>
     </div>
