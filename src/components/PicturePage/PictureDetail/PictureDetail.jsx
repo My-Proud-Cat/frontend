@@ -16,7 +16,7 @@ function PictureDetail() {
           </div>
         </div>
 
-        <p className={styles.content}>내용</p>
+        <p className={styles.content}>내용테스트</p>
       </div>
     </>
   );
