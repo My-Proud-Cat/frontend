@@ -2,6 +2,9 @@ import styles from './Comment.module.css';
 import SubmitButton from 'components/Common/SubmitButton/SubmitButton';
 import AnswerEditor from 'components/Common/AnswerEditor/AnswerEditor';
 import axios from 'axios';
+import { useState } from 'react';
+import { useRecoilValue } from 'recoil';
+import { getPictureComment } from '@store/getPictureCommentData';
 
 /* 텍스트 지우는 함수 */
 function clearText() {
@@ -9,7 +12,10 @@ function clearText() {
 }
 
 function Comment() {
-  const comment = document.getElementById('comment');
+  const pictureCommentData = useRecoilValue(getPictureComment);
+  const [comment, setComment] = useState([...pictureCommentData]);
+
+  const commentField = document.getElementById('comment');
 
   async function onClickButton() {
     await axios
@@ -18,11 +24,13 @@ function Comment() {
           nickname: '임시 닉네임',
           user_id: '임시 아이디',
         },
-        comment: comment.value,
+        comment: commentField.value,
         created_at: new Date().getTime(),
       })
       .then((res) => {
         console.log(res);
+        clearText();
+        window.location.reload();
       });
   }
 
@@ -48,7 +56,9 @@ function Comment() {
         </div>
       </div>
 
-      <AnswerEditor />
+      {comment.map((item) => {
+        return <AnswerEditor key={item.id} item={item} />;
+      })}
     </>
   );
 }

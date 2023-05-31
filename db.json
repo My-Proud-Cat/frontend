@@ -47,6 +47,15 @@
       "comment": "테스트",
       "created_at": 1685563748644,
       "id": 1
+    },
+    {
+      "user": {
+        "nickname": "임시 닉네임",
+        "user_id": "임시 아이디"
+      },
+      "comment": "테스트2",
+      "created_at": 1685565318634,
+      "id": 2
     }
   ]
 }
