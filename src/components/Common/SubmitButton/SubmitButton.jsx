@@ -1,12 +1,22 @@
 import styles from './SubmitButton.module.css';
 
-function SubmitButton({ ...restProps }) {
+function SubmitButton({ comment, ...restProps }) {
   return (
-    <div className={styles.layout}>
-      <button className={styles.submitButton} {...restProps}>
-        등록
-      </button>
-    </div>
+    <>
+      {comment ? (
+        <div className={styles.commentLayout}>
+          <button className={styles.commentSubmitButton} {...restProps}>
+            등록
+          </button>
+        </div>
+      ) : (
+        <div className={styles.layout}>
+          <button className={styles.submitButton} {...restProps}>
+            등록
+          </button>
+        </div>
+      )}
+    </>
   );
 }
 

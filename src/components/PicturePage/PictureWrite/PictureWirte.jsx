@@ -17,10 +17,10 @@ function PictureWirte() {
         },
         view: 2,
         like: 9,
-        created_at: '',
+        created_at: new Date().getTime(),
       })
-      .then((error) => {
-        console.log(error);
+      .then((res) => {
+        console.log(res);
       });
   }
 

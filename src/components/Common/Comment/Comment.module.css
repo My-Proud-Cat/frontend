@@ -1,17 +1,26 @@
 .layout {
   display: flex;
   flex-flow: column nowrap;
-  margin: 90px 0 50px 0;
+  margin: 90px 0 10px 0;
 }
 
 .label {
   font-size: 22px;
+  position: relative;
+}
+
+.label::before {
+  content: '';
+  border: 1px solid var(--gray-300);
+  position: absolute;
+  width: 100%;
+  transform: translateY(-40px);
 }
 
 .form {
-  width: auto;
+  width: calc(1024px - 40px);
   height: 100px;
-  margin: 30px 0 50px 0;
+  margin-top: 30px;
   border: 1px solid var(--gray-300);
   border-radius: 5px;
   resize: none;

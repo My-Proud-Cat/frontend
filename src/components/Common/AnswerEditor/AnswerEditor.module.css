@@ -1,0 +1,30 @@
+.comment {
+  margin-bottom: 80px;
+  position: relative;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.name {
+  color: var(--gray-500);
+}
+
+.date {
+  color: var(--gray-500);
+  font-size: 14px;
+}
+
+.answer {
+  margin: 30px 0 30px 0;
+}
+
+.comment::after {
+  content: '';
+  border: 1px solid var(--gray-300);
+  position: absolute;
+  width: 100%;
+  bottom: -40px;
+}

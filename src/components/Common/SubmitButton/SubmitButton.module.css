@@ -1,3 +1,24 @@
+/* comment = true */
+
+.commentLayout {
+  display: flex;
+  justify-content: flex-end;
+  transform: translateY(-60px);
+  margin-right: 20px;
+}
+
+.commentSubmitButton {
+  width: 72px;
+  height: 35px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--primary);
+  color: white;
+  font-size: 14px;
+}
+
+/* comment = false */
+
 .layout {
   display: flex;
   justify-content: center;
