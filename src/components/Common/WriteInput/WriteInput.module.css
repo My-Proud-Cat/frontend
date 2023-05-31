@@ -1,3 +1,26 @@
+/* comment = true */
+
+.form {
+  width: calc(1024px - 40px);
+  height: 100px;
+  margin-top: 30px;
+  border: 1px solid var(--gray-300);
+  border-radius: 5px;
+  resize: none;
+  padding: 20px;
+}
+
+.form::placeholder {
+  color: var(--gray-300);
+  opacity: 1; /* 파이어폭스에서 흐리게 보이는 현상 해결 방안 */
+}
+
+.form:focus {
+  outline: none;
+}
+
+/* comment = false */
+
 .layout {
   display: flex;
   flex-flow: row nowrap;

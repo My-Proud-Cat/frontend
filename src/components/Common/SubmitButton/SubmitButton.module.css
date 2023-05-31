@@ -3,7 +3,7 @@
 .commentLayout {
   display: flex;
   justify-content: flex-end;
-  transform: translateY(-60px);
+  transform: translateY(-62px);
   margin-right: 20px;
 }
 
