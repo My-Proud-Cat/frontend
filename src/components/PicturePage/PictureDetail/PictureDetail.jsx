@@ -17,6 +17,12 @@ function PictureDetail() {
         </div>
 
         <p className={styles.content}>내용테스트</p>
+
+        <div className={styles.main}>
+          <p className={styles.picture}></p>
+
+          <button className={styles.like}>좋아요</button>
+        </div>
       </div>
     </>
   );

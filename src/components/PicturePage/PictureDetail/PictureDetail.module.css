@@ -37,5 +37,39 @@
   border: 1px solid var(--gray-300);
   position: absolute;
   width: 100%;
-  top: 50%;
+  top: 60px;
+}
+
+.main {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  position: relative;
+}
+
+.picture {
+  border: 1px solid var(--gray-300);
+  width: 500px;
+  height: 300px;
+  margin-top: 50px;
+}
+
+.like {
+  width: 100px;
+  height: 40px;
+  font-size: 14px;
+  border: 1px solid var(--gray-300);
+  border-radius: 5px;
+  background-color: transparent;
+  margin-top: 40px;
+  color: var(--primary);
+}
+
+.like::after {
+  content: '';
+  border: 1px solid var(--gray-300);
+  position: absolute;
+  width: 100%;
+  left: 0;
+  transform: translateY(70px);
 }
