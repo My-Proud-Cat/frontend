@@ -1,5 +1,6 @@
 import styles from './PictureDetail.module.css';
 import Banner from 'components/Common/Banner/Banner';
+import Comment from 'components/Common/Comment/Comment';
 
 function PictureDetail() {
   return (
@@ -15,14 +16,14 @@ function PictureDetail() {
             <p>2023.05.20</p>
           </div>
         </div>
-
         <p className={styles.content}>내용테스트</p>
-
         <div className={styles.main}>
           <p className={styles.picture}></p>
 
           <button className={styles.like}>좋아요</button>
         </div>
+
+        <Comment />
       </div>
     </>
   );

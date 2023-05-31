@@ -65,11 +65,11 @@
   color: var(--primary);
 }
 
-.like::after {
+/* .like::after {
   content: '';
   border: 1px solid var(--gray-300);
   position: absolute;
   width: 100%;
   left: 0;
   transform: translateY(70px);
-}
+} */
