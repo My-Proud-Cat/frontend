@@ -5,11 +5,11 @@ import Sort from 'components/Common/Sort/Sort';
 import Banner from 'components/Common/Banner/Banner';
 import { useState } from 'react';
 import { useRecoilValue } from 'recoil';
-import { getPicture } from '@store/getPictureData';
+import { getPictureList } from '@store/getPictureData';
 import { useNavigate } from 'react-router-dom';
 
 function PictureList() {
-  const pictureData = useRecoilValue(getPicture);
+  const pictureData = useRecoilValue(getPictureList);
 
   const [posts, setPosts] = useState([...pictureData]);
   const [currentPage, setCurrentPage] = useState(1); // 현재 페이지

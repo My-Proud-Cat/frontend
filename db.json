@@ -25,6 +25,19 @@
       "like": 3,
       "created_at": 1685567827685,
       "id": 2
+    },
+    {
+      "title": "테스트입니다",
+      "content": "내용 테스트입니다",
+      "img": "",
+      "user": {
+        "nickname": "임시 닉네임",
+        "user_id": "임시 아이디"
+      },
+      "view": 2,
+      "like": 3,
+      "created_at": 1686080996754,
+      "id": 3
     }
   ],
   "comment": [

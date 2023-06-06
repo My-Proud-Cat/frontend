@@ -1,16 +1,16 @@
-import { atom, selector } from 'recoil';
+import { atom, selector, RecoilEnv, selectorFamily } from 'recoil';
 import axios from 'axios';
+
+RecoilEnv.RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED = false;
 
 export const getPictureInitialData = atom({
   key: 'getPictureInitialData',
   default: [],
 });
 
-export const getPicture = selector({
-  key: 'getPicture',
+export const getPictureList = selector({
+  key: 'getPictureList',
   get: async ({ get }) => {
-    get(getPictureInitialData);
-
     const searchParams = get(getPictureInitialData);
 
     const response = await axios.get('http://localhost:3001/picture', {
@@ -19,4 +19,19 @@ export const getPicture = selector({
 
     return response.data;
   },
+});
+
+export const getPicture = selectorFamily({
+  key: 'getPicture',
+  get:
+    (id) =>
+    async ({ get }) => {
+      const searchParams = get(getPictureInitialData);
+
+      const response = await axios.get(`http://localhost:3001/picture/${id}`, {
+        params: searchParams,
+      });
+
+      return response.data;
+    },
 });
