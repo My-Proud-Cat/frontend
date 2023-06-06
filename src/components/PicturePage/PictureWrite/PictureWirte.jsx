@@ -3,24 +3,35 @@ import Banner from 'components/Common/Banner/Banner';
 import WriteInput from 'components/Common/WriteInput/WriteInput';
 import SubmitButton from 'components/Common/SubmitButton/SubmitButton';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
+import { titleState } from '@store/getPictureTitleData';
+import { contentState } from '@store/getPictureContentData';
 
 function PictureWirte() {
+  const navigate = useNavigate();
+
+  const titleField = useRecoilValue(titleState);
+  const contentField = useRecoilValue(contentState);
+
   async function onClickButton() {
     await axios
       .post('http://localhost:3001/picture', {
-        title: '임시 제목',
-        describe: '임시 내용',
+        title: titleField,
+        content: contentField,
         img: '',
         user: {
           nickname: '임시 닉네임',
           user_id: '임시 아이디',
         },
         view: 2,
-        like: 9,
-        created_at: new Date().getTime(),
+        like: 3,
+        created_at: Date.now(),
       })
       .then((res) => {
         console.log(res);
+        navigate('/');
+        window.location.reload();
       });
   }
 

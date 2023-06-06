@@ -2,6 +2,9 @@ import { string } from 'prop-types';
 import styles from './WriteInput.module.css';
 import axios from 'axios';
 import SubmitButton from 'components/Common/SubmitButton/SubmitButton';
+import { useRecoilState } from 'recoil';
+import { titleState } from '@store/getPictureTitleData';
+import { contentState } from '@store/getPictureContentData';
 
 /* 텍스트 지우는 함수 */
 function clearText() {
@@ -9,9 +12,20 @@ function clearText() {
 }
 
 function WriteInput({ comment }) {
+  const [title, setTitle] = useRecoilState(titleState);
+  const [content, setContent] = useRecoilState(contentState);
+
+  const onChangeTitle = (e) => {
+    setTitle(e.target.value);
+  };
+
+  const onChangeContent = (e) => {
+    setContent(e.target.value);
+  };
+
   const commentField = document.getElementById('comment');
 
-  async function onClickButton() {
+  async function onClickCommentButton() {
     await axios
       .post('http://localhost:3001/comment', {
         user: {
@@ -42,7 +56,7 @@ function WriteInput({ comment }) {
           <SubmitButton
             comment="true"
             onClick={() => {
-              onClickButton();
+              onClickCommentButton();
             }}
           />
         </div>
@@ -53,12 +67,18 @@ function WriteInput({ comment }) {
           <div className={styles.layout}>
             <div className={styles.input}>
               <input
+                id="title"
                 className={styles.title}
                 placeholder="제목을 입력해주세요"
+                onChange={onChangeTitle}
+                value={title}
               />
               <textarea
+                id="content"
                 className={styles.content}
                 placeholder="내용을 입력해주세요"
+                onChange={onChangeContent}
+                value={content}
               />
             </div>
 

@@ -1,41 +1,30 @@
 {
   "picture": [
     {
-      "id": 1,
-      "title": "제목입니다1",
-      "content": "내용입니다1",
-      "user": {
-        "nickName": "임시 닉네임",
-        "userId": ""
-      },
-      "hits": 1,
-      "like": 5,
-      "createdAt": "2023-05-20"
-    },
-    {
-      "id": 2,
-      "title": "제목입니다2",
-      "content": "내용입니다2",
-      "user": {
-        "nickName": "임시 닉네임",
-        "userId": ""
-      },
-      "hits": 1,
-      "like": 5,
-      "createdAt": "2023-05-21"
-    },
-    {
-      "title": "임시 제목",
-      "content": "임시 내용",
+      "title": "제목 테스트",
+      "content": "내용 테스트",
       "img": "",
       "user": {
-        "nickName": "임시 닉네임",
-        "userId": "임시 아이디"
+        "nickname": "임시 닉네임",
+        "user_id": "임시 아이디"
       },
-      "hits": 2,
-      "like": 9,
-      "createdAt": "",
-      "id": 5
+      "view": 2,
+      "like": 3,
+      "created_at": 1685567643400,
+      "id": 1
+    },
+    {
+      "title": "제목 테스트2",
+      "content": "내용 테스트2",
+      "img": "",
+      "user": {
+        "nickname": "임시 닉네임",
+        "user_id": "임시 아이디"
+      },
+      "view": 2,
+      "like": 3,
+      "created_at": 1685567827685,
+      "id": 2
     }
   ],
   "comment": [

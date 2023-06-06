@@ -5,15 +5,15 @@ import Sort from 'components/Common/Sort/Sort';
 import Banner from 'components/Common/Banner/Banner';
 import { useState } from 'react';
 import { useRecoilValue } from 'recoil';
-import { getPictureList } from '@store/getPictureListData';
+import { getPicture } from '@store/getPictureData';
 import { useNavigate } from 'react-router-dom';
 
 function PictureList() {
-  const pictureListData = useRecoilValue(getPictureList);
+  const pictureData = useRecoilValue(getPicture);
 
-  const [posts, setPosts] = useState([...pictureListData]);
+  const [posts, setPosts] = useState([...pictureData]);
   const [currentPage, setCurrentPage] = useState(1); // 현재 페이지
-  const [postsPerPage, setPostsPerPage] = useState(3); // 한 페이지에 보일 게시글 수
+  const [postsPerPage, setPostsPerPage] = useState(2); // 한 페이지에 보일 게시글 수
 
   const indexOfLast = currentPage * postsPerPage;
   const indexOfFirst = indexOfLast - postsPerPage;
