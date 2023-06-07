@@ -6,10 +6,18 @@
 .info {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .name {
   color: var(--gray-500);
+  font-size: 14px;
+}
+
+.position {
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .date {
