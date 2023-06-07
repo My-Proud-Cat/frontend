@@ -62,4 +62,8 @@
   border-radius: 5px;
   background-color: transparent;
   margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
 }

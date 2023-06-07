@@ -1,9 +1,11 @@
 import styles from './PictureDetail.module.css';
 import Banner from 'components/Common/Banner/Banner';
 import Comment from 'components/Common/Comment/Comment';
+import { ReactComponent as Heart } from 'assets/heart.svg';
 import { useRecoilValueLoadable } from 'recoil';
 import { getPicture } from '@store/getPictureData';
 import { useNavigate, useParams } from 'react-router-dom';
+import { ReactComponentasDot } from 'assets/dot.svg';
 
 function PictureDetail() {
   const { id } = useParams();
@@ -40,7 +42,10 @@ function PictureDetail() {
         <div className={styles.main}>
           <p className={styles.picture}></p>
 
-          <button className={styles.like}>좋아요</button>
+          <button className={styles.like}>
+            <p>좋아요</p>
+            <Heart />
+          </button>
         </div>
 
         <Comment />
