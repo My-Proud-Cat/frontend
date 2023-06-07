@@ -13,6 +13,9 @@ const DotButton = () => {
     }
   };
 
+  const clickUpdate = () => {};
+  const clickDelete = () => {};
+
   return (
     <div className={styles.layout}>
       <Dot

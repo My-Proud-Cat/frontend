@@ -54,7 +54,23 @@
   margin-top: 50px;
 }
 
+/* 좋아요 눌렀을 때 */
 .like {
+  width: 90px;
+  height: 40px;
+  font-size: 13px;
+  border: 2px solid var(--secondary);
+  border-radius: 5px;
+  background-color: transparent;
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+/* 좋아요 안 눌렀을 때 */
+.like_no {
   width: 90px;
   height: 40px;
   font-size: 13px;

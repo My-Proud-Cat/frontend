@@ -97,6 +97,15 @@
       "comment": "테스트2",
       "created_at": 1685565318634,
       "id": 2
+    },
+    {
+      "user": {
+        "nickname": "테스트",
+        "user_id": "임시 아이디"
+      },
+      "comment": "댓글 테스트",
+      "created_at": 1686167883388,
+      "id": 3
     }
   ]
 }

@@ -18,8 +18,8 @@ function Header() {
       <div className={styles.nav}>
         <div className={styles.category}>
           <LinkHover to="/">인생샷</LinkHover>
-          <LinkHover to="/write">커뮤니티</LinkHover>
-          <LinkHover to="/1">유기묘 후원</LinkHover>
+          <LinkHover to="/">커뮤니티</LinkHover>
+          <LinkHover to="/">유기묘 후원</LinkHover>
         </div>
 
         <div className={styles.category}>

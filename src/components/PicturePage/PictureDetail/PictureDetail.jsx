@@ -5,9 +5,12 @@ import { ReactComponent as Heart } from 'assets/heart.svg';
 import { useRecoilValueLoadable } from 'recoil';
 import { getPicture } from '@store/getPictureData';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useState } from 'react';
 
 function PictureDetail() {
   const { id } = useParams();
+
+  const [likeState, setLikeState] = useState('');
 
   const pictureData = useRecoilValueLoadable(getPicture(id));
   let item = [pictureData].find(() => id);
@@ -21,6 +24,14 @@ function PictureDetail() {
   if (item === 'loading') {
     return <div>Loading...</div>;
   }
+
+  const clickLike = () => {
+    if (likeState === '') {
+      setLikeState('click');
+    } else {
+      setLikeState('');
+    }
+  };
 
   return (
     <>
@@ -41,7 +52,10 @@ function PictureDetail() {
         <div className={styles.main}>
           <p className={styles.picture}></p>
 
-          <button className={styles.like}>
+          <button
+            className={likeState === '' ? styles.like : styles.like_no}
+            onClick={() => clickLike()}
+          >
             <p>좋아요</p>
             <Heart />
           </button>
