@@ -1,0 +1,46 @@
+.layout {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.dot {
+  position: relative;
+  cursor: pointer;
+  z-index: 2;
+}
+
+/* show */
+.option_show {
+  position: absolute;
+  font-size: 14px;
+  top: 18px;
+  border-left: 2px dashed var(--secondary);
+  border-right: 2px dashed var(--secondary);
+  border-bottom: 2px dashed var(--secondary);
+  border-radius: 5px;
+  padding: 15px 12px 15px 12px;
+}
+
+/* hidden */
+.option_hidden {
+  display: none;
+}
+
+.option_show > p:first-child {
+  margin-bottom: 10px;
+  width: 30px;
+  cursor: pointer;
+}
+
+.option_show > p:first-child:hover {
+  color: var(--primary);
+}
+
+.option_show > p:last-child {
+  cursor: pointer;
+}
+
+.option_show > p:last-child:hover {
+  color: var(--primary);
+}

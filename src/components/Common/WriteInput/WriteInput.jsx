@@ -29,7 +29,7 @@ function WriteInput({ comment }) {
     await axios
       .post('http://localhost:3001/comment', {
         user: {
-          nickname: '임시 닉네임',
+          nickname: '테스트',
           user_id: '임시 아이디',
         },
         comment: commentField.value,

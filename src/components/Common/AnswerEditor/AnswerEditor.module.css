@@ -17,12 +17,13 @@
 .position {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 25px;
 }
 
 .date {
   color: var(--gray-500);
   font-size: 14px;
+  padding-bottom: 5px;
 }
 
 .answer {

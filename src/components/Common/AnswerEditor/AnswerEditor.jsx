@@ -1,5 +1,5 @@
 import styles from './AnswerEditor.module.css';
-import { ReactComponent as Dot } from 'assets/dot.svg';
+import DotButton from 'components/Common//DotButton/DotButton';
 
 function AnswerEditor({ item }) {
   const { comment, user, createdAt } = item;
@@ -11,7 +11,7 @@ function AnswerEditor({ item }) {
           <p className={styles.name}>{user.nickname}</p>
 
           <div className={styles.position}>
-            <Dot />
+            <DotButton />
             <p className={styles.date}>2023.05.27</p>
           </div>
         </div>
