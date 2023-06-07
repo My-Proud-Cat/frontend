@@ -21,11 +21,11 @@ function PictureWirte() {
         content: contentField,
         img: '',
         user: {
-          nickname: '임시 닉네임',
+          nickname: '테스트33',
           user_id: '임시 아이디',
         },
-        view: 2,
-        like: 3,
+        view: 0,
+        like: 6,
         created_at: Date.now(),
       })
       .then((res) => {

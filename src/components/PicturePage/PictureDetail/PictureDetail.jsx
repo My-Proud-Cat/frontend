@@ -5,7 +5,6 @@ import { ReactComponent as Heart } from 'assets/heart.svg';
 import { useRecoilValueLoadable } from 'recoil';
 import { getPicture } from '@store/getPictureData';
 import { useNavigate, useParams } from 'react-router-dom';
-import { ReactComponentasDot } from 'assets/dot.svg';
 
 function PictureDetail() {
   const { id } = useParams();
@@ -14,8 +13,6 @@ function PictureDetail() {
   let item = [pictureData].find(() => id);
 
   const { title, content, img, user, like, view } = item.contents;
-
-  console.log(user?.nickname);
 
   if (item === 'hasError') {
     return <div>Error : {console.log(item.error)}</div>;
@@ -38,7 +35,9 @@ function PictureDetail() {
             <p>2023.05.20</p>
           </div>
         </div>
+
         <p className={styles.content}>{content}</p>
+
         <div className={styles.main}>
           <p className={styles.picture}></p>
 

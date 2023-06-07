@@ -3,7 +3,7 @@ import Article from 'components/Common/Article/Article';
 import Pagination from 'components/Common/Pagination/Pagination';
 import Sort from 'components/Common/Sort/Sort';
 import Banner from 'components/Common/Banner/Banner';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import { getPictureList } from '@store/getPictureData';
 import { useNavigate } from 'react-router-dom';
@@ -12,8 +12,9 @@ function PictureList() {
   const pictureData = useRecoilValue(getPictureList);
 
   const [posts, setPosts] = useState([...pictureData]);
+
   const [currentPage, setCurrentPage] = useState(1); // 현재 페이지
-  const [postsPerPage, setPostsPerPage] = useState(2); // 한 페이지에 보일 게시글 수
+  const [postsPerPage, setPostsPerPage] = useState(3); // 한 페이지에 보일 게시글 수
 
   const indexOfLast = currentPage * postsPerPage;
   const indexOfFirst = indexOfLast - postsPerPage;
@@ -26,6 +27,29 @@ function PictureList() {
   };
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!pictureData) return;
+    setPosts(pictureData);
+  }, [pictureData]);
+
+  const onClickSort = (e) => {
+    if (e.target.name === 'date') {
+      setPosts(
+        [...pictureData].sort(function (a, b) {
+          return new Date(b.created_at) - new Date(a.created_at);
+        }),
+      );
+    }
+
+    if (e.target.name === 'like') {
+      setPosts(
+        [...pictureData].sort(function (a, b) {
+          return b.like - a.like;
+        }),
+      );
+    }
+  };
 
   return (
     <>
@@ -46,7 +70,7 @@ function PictureList() {
 
           <p className={styles.line}></p>
 
-          <Sort />
+          <Sort onClick={() => onClickSort(event)} />
         </div>
 
         <div className={styles.post}>

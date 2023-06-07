@@ -38,6 +38,45 @@
       "like": 3,
       "created_at": 1686080996754,
       "id": 3
+    },
+    {
+      "title": "아아",
+      "content": "아아아",
+      "img": "",
+      "user": {
+        "nickname": "테스트",
+        "user_id": "임시 아이디"
+      },
+      "view": 5,
+      "like": 4,
+      "created_at": 1686160907825,
+      "id": 4
+    },
+    {
+      "title": "우히",
+      "content": "우히히",
+      "img": "",
+      "user": {
+        "nickname": "테스트",
+        "user_id": "임시 아이디"
+      },
+      "view": 1,
+      "like": 9,
+      "created_at": 1686160924601,
+      "id": 5
+    },
+    {
+      "title": "좋아",
+      "content": "좋아요",
+      "img": "",
+      "user": {
+        "nickname": "테스트33",
+        "user_id": "임시 아이디"
+      },
+      "view": 0,
+      "like": 6,
+      "created_at": 1686163100740,
+      "id": 6
     }
   ],
   "comment": [
