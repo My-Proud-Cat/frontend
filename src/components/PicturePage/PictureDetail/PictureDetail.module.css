@@ -55,21 +55,11 @@
 }
 
 .like {
-  width: 100px;
+  width: 90px;
   height: 40px;
-  font-size: 14px;
+  font-size: 13px;
   border: 1px solid var(--gray-300);
   border-radius: 5px;
   background-color: transparent;
   margin-top: 40px;
-  color: var(--primary);
 }
-
-/* .like::after {
-  content: '';
-  border: 1px solid var(--gray-300);
-  position: absolute;
-  width: 100%;
-  left: 0;
-  transform: translateY(70px);
-} */

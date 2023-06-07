@@ -1,4 +1,5 @@
 import styles from './Pagination.module.css';
+import { ReactComponent as Paginate } from 'assets/paginate.svg';
 
 function Pagination({ postsPerPage, totalPosts, paginate, currentPage }) {
   const pageNumbers = [];
@@ -17,7 +18,7 @@ function Pagination({ postsPerPage, totalPosts, paginate, currentPage }) {
         }}
         disabled={currentPage === 1}
       >
-        이전
+        <Paginate className={styles.prev} />
       </button>
 
       <ul className={styles.paginate}>
@@ -44,7 +45,7 @@ function Pagination({ postsPerPage, totalPosts, paginate, currentPage }) {
         }}
         disabled={currentPage === pageNumbers.length}
       >
-        다음
+        <Paginate className={styles.next} />
       </button>
     </div>
   );

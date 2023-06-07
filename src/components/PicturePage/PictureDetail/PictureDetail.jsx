@@ -40,7 +40,7 @@ function PictureDetail() {
         <div className={styles.main}>
           <p className={styles.picture}></p>
 
-          <button className={styles.like}>좋아요 {like}</button>
+          <button className={styles.like}>좋아요</button>
         </div>
 
         <Comment />

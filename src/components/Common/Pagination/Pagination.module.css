@@ -2,6 +2,8 @@
   margin: 0 auto;
   margin-top: 40px;
   display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
 }
 
 .paginate {
@@ -25,11 +27,25 @@
   background-color: var(--primary);
 }
 
-.pageNumber:hover {
-  /* color: var(--primary); */
-}
-
 .paginationButton {
   background-color: transparent;
   border: none;
+  display: flex;
+  align-items: center;
+}
+
+.prev {
+  width: 25px;
+  height: 25px;
+  transform: rotate(180deg);
+  margin-right: 5px;
+}
+
+.next {
+  width: 25px;
+  height: 25px;
+}
+
+.paginationButton:disabled {
+  cursor: default;
 }
