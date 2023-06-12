@@ -35,10 +35,9 @@ function WriteInput({ comment }) {
         comment: commentField.value,
         created_at: new Date().getTime(),
       })
-      .then((res) => {
-        console.log(res);
+      .then(() => {
         clearText();
-        window.location.reload();
+        location.reload();
       });
   }
 

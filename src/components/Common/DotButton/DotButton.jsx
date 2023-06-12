@@ -29,7 +29,22 @@ const DotButton = () => {
     }
   };
   const clickDelete = async () => {
-    await axios.delete('http://localhost:3001/comment');
+    let ok = window.confirm('삭제하시나요?');
+
+    if (ok) {
+      await axios
+        .delete('http://localhost:3001/comment', {
+          data: {
+            id: comments.id,
+          },
+        })
+        .then(() => {
+          location.reload();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   };
 
   return (
