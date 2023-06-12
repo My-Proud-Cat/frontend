@@ -12,7 +12,7 @@ function Header() {
   return (
     <div className={styles.layout}>
       <Link to="/" className={styles.logo}>
-        로고 자리
+        My Proud Cat
       </Link>
 
       <div className={styles.nav}>
