@@ -20,6 +20,8 @@
   border-bottom: 2px dashed var(--secondary);
   border-radius: 5px;
   padding: 15px 12px 15px 12px;
+  display: flex;
+  flex-flow: column nowrap;
 }
 
 /* hidden */
@@ -27,20 +29,23 @@
   display: none;
 }
 
-.option_show > p:first-child {
+.option_show > button:first-child {
+  background-color: transparent;
+  border: none;
   margin-bottom: 10px;
-  width: 30px;
   cursor: pointer;
 }
 
-.option_show > p:first-child:hover {
+.option_show > button:first-child:hover {
   color: var(--primary);
 }
 
-.option_show > p:last-child {
+.option_show > button:last-child {
+  background-color: transparent;
+  border: none;
   cursor: pointer;
 }
 
-.option_show > p:last-child:hover {
+.option_show > button:last-child:hover {
   color: var(--primary);
 }
