@@ -5,6 +5,7 @@ import SubmitButton from 'components/Common/SubmitButton/SubmitButton';
 import { useRecoilState } from 'recoil';
 import { titleState } from '@store/getPictureTitleData';
 import { contentState } from '@store/getPictureContentData';
+import { useParams } from 'react-router-dom';
 
 /* 텍스트 지우는 함수 */
 function clearText() {
@@ -12,6 +13,8 @@ function clearText() {
 }
 
 function WriteInput({ comment }) {
+  const { id } = useParams();
+
   const [title, setTitle] = useRecoilState(titleState);
   const [content, setContent] = useRecoilState(contentState);
 
@@ -27,7 +30,7 @@ function WriteInput({ comment }) {
 
   async function onClickCommentButton() {
     await axios
-      .post('http://localhost:3001/comment', {
+      .post(`http://localhost:8080/${id}/comments`, {
         user: {
           nickname: '테스트',
           user_id: '임시 아이디',

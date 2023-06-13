@@ -4,9 +4,12 @@ import { ReactComponent as Dot } from 'assets/dot.svg';
 import { useRecoilState } from 'recoil';
 import { getPictureComment } from '@store/getPictureCommentData';
 import axios from 'axios';
+import { useParams } from 'react-router';
 
 const DotButton = () => {
-  const [comments, setComments] = useRecoilState(getPictureComment);
+  const { id } = useParams();
+
+  // const [comments, setComments] = useRecoilState(getPictureComment);
 
   const [state, setState] = useState('hidden');
   const [update, setUpdate] = useState(false);
@@ -19,11 +22,11 @@ const DotButton = () => {
     }
   };
 
-  const clickUpdate = async () => {
+  /* const clickUpdate = async () => {
     setUpdate(true);
 
     if (update === true) {
-      await axios.put('http://localhost:3001/comment', {
+      await axios.put(`http://localhost:8080/${id}/comment`, {
         // comment: commentField.value,
       });
     }
@@ -33,7 +36,7 @@ const DotButton = () => {
 
     if (ok) {
       await axios
-        .delete('http://localhost:3001/comment', {
+        .delete(`http://localhost:8080/${id}/comment`, {
           data: {
             id: comments.id,
           },
@@ -46,7 +49,7 @@ const DotButton = () => {
         });
     }
   };
-
+ */
   return (
     <div className={styles.layout}>
       <Dot
@@ -64,7 +67,7 @@ const DotButton = () => {
         <button
           name="update"
           onClick={() => {
-            clickUpdate();
+            // clickUpdate();
           }}
         >
           수정
@@ -72,7 +75,7 @@ const DotButton = () => {
         <button
           name="delete"
           onClick={() => {
-            clickDelete();
+            // clickDelete();
           }}
         >
           삭제

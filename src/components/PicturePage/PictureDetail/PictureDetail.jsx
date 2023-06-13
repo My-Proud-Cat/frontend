@@ -4,7 +4,7 @@ import Comment from 'components/Common/Comment/Comment';
 import { ReactComponent as Heart } from 'assets/heart.svg';
 import { useRecoilValueLoadable } from 'recoil';
 import { getPicture } from '@store/getPictureData';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 
 function PictureDetail() {
@@ -15,7 +15,7 @@ function PictureDetail() {
   const pictureData = useRecoilValueLoadable(getPicture(id));
   let item = [pictureData].find(() => id);
 
-  const { title, content, img, user, like, view } = item.contents;
+  const { title, describe, img, user, like, view } = item.contents;
 
   if (item === 'hasError') {
     return <div>Error : {console.log(item.error)}</div>;
@@ -47,7 +47,7 @@ function PictureDetail() {
           </div>
         </div>
 
-        <p className={styles.content}>{content}</p>
+        <p className={styles.content}>{describe}</p>
 
         <div className={styles.main}>
           <p className={styles.picture}></p>

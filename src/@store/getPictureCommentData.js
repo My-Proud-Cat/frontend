@@ -8,11 +8,15 @@ export const getPictureCommentInitialData = atom({
 
 export const getPictureComment = selector({
   key: 'getPictureComment',
-  get: async ({ get }) => {
-    get(getPictureCommentInitialData);
+  get:
+    (id) =>
+    async ({ get }) => {
+      get(getPictureCommentInitialData);
 
-    const response = await axios.get('http://localhost:3001/comment');
+      const response = await axios.get(
+        `http://localhost:8080/picture/${id}/comments`,
+      );
 
-    return response.data;
-  },
+      return response.data;
+    },
 });

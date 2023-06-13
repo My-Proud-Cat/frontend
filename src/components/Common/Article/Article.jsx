@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import styles from './Article.module.css';
 
 function Article({ item }) {
-  const { img, title, content, user, created_at, view, like, id } = item;
+  const { img, title, describe, users, created_at, view, heartCnt, id } = item;
 
   return (
     <div className={styles.layout}>
@@ -12,14 +12,14 @@ function Article({ item }) {
         <Link to={`/${id}`} className={styles.title}>
           {title}
         </Link>
-        <p className={styles.describe}>{content}</p>
+        <p className={styles.describe}>{describe}</p>
 
         <div className={styles.position}>
-          <p className={styles.nickname}>{user.nickname}</p>
+          {/* <p className={styles.nickname}>{users.nickname}</p> */}
 
           <div className={styles.numbers}>
             <p className={styles.view}>조회수 {view}</p>
-            <p className={styles.like}>추천순 {like}</p>
+            <p className={styles.like}>추천순 {heartCnt}</p>
           </div>
         </div>
       </div>

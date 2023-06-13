@@ -13,7 +13,7 @@ export const getPictureList = selector({
   get: async ({ get }) => {
     const searchParams = get(getPictureInitialData);
 
-    const response = await axios.get('http://localhost:3001/picture', {
+    const response = await axios.get('http://localhost:8080/picture', {
       params: searchParams,
     });
 
@@ -28,7 +28,7 @@ export const getPicture = selectorFamily({
     async ({ get }) => {
       const searchParams = get(getPictureInitialData);
 
-      const response = await axios.get(`http://localhost:3001/picture/${id}`, {
+      const response = await axios.get(`http://localhost:8080/picture/${id}`, {
         params: searchParams,
       });
 

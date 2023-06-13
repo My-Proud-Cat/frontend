@@ -16,22 +16,22 @@ function PictureWirte() {
 
   async function onClickButton() {
     await axios
-      .post('http://localhost:3001/picture', {
+      .post('http://localhost:8080/picture', {
         title: titleField,
-        content: contentField,
+        describe: contentField,
         img: '',
         user: {
-          nickname: '테스트33',
+          nickname: '닉네임',
           user_id: '임시 아이디',
         },
-        view: 0,
-        like: 6,
         created_at: Date.now(),
       })
-      .then((res) => {
-        console.log(res);
+      .then(() => {
         navigate('/');
         window.location.reload();
+      })
+      .catch((err) => {
+        console.log(err.response.data);
       });
   }
 

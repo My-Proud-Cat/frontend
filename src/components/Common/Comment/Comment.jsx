@@ -1,13 +1,16 @@
 import styles from './Comment.module.css';
 import AnswerEditor from 'components/Common/AnswerEditor/AnswerEditor';
 import { useState } from 'react';
-import { useRecoilValue } from 'recoil';
+import { useRecoilValueLoadable } from 'recoil';
 import { getPictureComment } from '@store/getPictureCommentData';
 import WriteInput from 'components/Common/WriteInput/WriteInput';
+import { useNavigate, useParams } from 'react-router-dom';
 
 function Comment() {
-  const pictureCommentData = useRecoilValue(getPictureComment);
-  const [comment, setComment] = useState([...pictureCommentData]);
+  const { id } = useParams();
+
+  // const pictureCommentData = useRecoilValueLoadable(getPictureComment(id));
+  // const [comment, setComment] = useState([...pictureCommentData]);
 
   return (
     <>
@@ -17,9 +20,9 @@ function Comment() {
         <WriteInput comment="true" />
       </div>
 
-      {comment.map((item) => {
+      {/* {comment.map((item) => {
         return <AnswerEditor key={item.id} item={item} />;
-      })}
+      })} */}
     </>
   );
 }

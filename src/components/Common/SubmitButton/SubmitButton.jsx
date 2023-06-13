@@ -5,13 +5,17 @@ function SubmitButton({ comment, ...restProps }) {
     <>
       {comment ? (
         <div className={styles.commentLayout}>
-          <button className={styles.commentSubmitButton} {...restProps}>
+          <button
+            className={styles.commentSubmitButton}
+            type="submit"
+            {...restProps}
+          >
             등록
           </button>
         </div>
       ) : (
         <div className={styles.layout}>
-          <button className={styles.submitButton} {...restProps}>
+          <button className={styles.submitButton} type="submit" {...restProps}>
             등록
           </button>
         </div>
