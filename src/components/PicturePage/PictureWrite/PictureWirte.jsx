@@ -20,18 +20,18 @@ function PictureWirte() {
         title: titleField,
         describe: contentField,
         img: '',
-        user: {
+        /* user: {
           nickname: '닉네임',
           user_id: '임시 아이디',
-        },
-        created_at: Date.now(),
+        }, */
       })
       .then(() => {
         navigate('/');
         window.location.reload();
       })
       .catch((err) => {
-        console.log(err.response.data);
+        // console.log(err);
+        console.log(location.origin);
       });
   }
 

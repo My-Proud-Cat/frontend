@@ -22,7 +22,7 @@ function PictureDetail() {
   }
 
   if (item === 'loading') {
-    return <div>Loading...</div>;
+    return <div>로딩중입니다</div>;
   }
 
   const clickLike = () => {
@@ -53,7 +53,7 @@ function PictureDetail() {
           <p className={styles.picture}></p>
 
           <button
-            className={likeState === '' ? styles.like : styles.like_no}
+            className={likeState === '' ? styles.like_no : styles.like}
             onClick={() => clickLike()}
           >
             <p>좋아요</p>

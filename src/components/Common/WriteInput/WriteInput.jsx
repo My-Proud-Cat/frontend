@@ -30,17 +30,20 @@ function WriteInput({ comment }) {
 
   async function onClickCommentButton() {
     await axios
-      .post(`http://localhost:8080/${id}/comments`, {
-        user: {
+      .post(`http://localhost:8080/proudcat/${id}`, {
+        /* user: {
           nickname: '테스트',
           user_id: '임시 아이디',
-        },
-        comment: commentField.value,
-        created_at: new Date().getTime(),
+        }, */
+        content: commentField.value,
+        // created_at: new Date().getTime(),
       })
       .then(() => {
         clearText();
         location.reload();
+      })
+      .catch((err) => {
+        console.log(err);
       });
   }
 

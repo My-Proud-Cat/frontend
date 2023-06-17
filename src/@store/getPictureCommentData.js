@@ -1,4 +1,4 @@
-import { atom, selector } from 'recoil';
+import { atom, selectorFamily } from 'recoil';
 import axios from 'axios';
 
 export const getPictureCommentInitialData = atom({
@@ -6,15 +6,18 @@ export const getPictureCommentInitialData = atom({
   default: [],
 });
 
-export const getPictureComment = selector({
+export const getPictureComment = selectorFamily({
   key: 'getPictureComment',
   get:
     (id) =>
     async ({ get }) => {
-      get(getPictureCommentInitialData);
+      const searchParams = get(getPictureCommentInitialData);
 
       const response = await axios.get(
         `http://localhost:8080/picture/${id}/comments`,
+        {
+          params: searchParams,
+        },
       );
 
       return response.data;
