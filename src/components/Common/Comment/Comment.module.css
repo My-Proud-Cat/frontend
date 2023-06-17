@@ -16,3 +16,10 @@
   width: 100%;
   transform: translateY(-40px);
 }
+
+.empty {
+  text-align: center;
+  margin: 30px 0 80px 0;
+  color: var(--gray-400);
+  font-size: 18px;
+}

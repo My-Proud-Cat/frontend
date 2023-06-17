@@ -12,7 +12,7 @@ function AnswerEditor({ item }) {
 
   const { user, commentDetails } = item[0];
 
-  console.log(item[0]);
+  // console.log(item[0]);
 
   return (
     <>

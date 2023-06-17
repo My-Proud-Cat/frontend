@@ -15,7 +15,7 @@ function PictureDetail() {
   const pictureData = useRecoilValueLoadable(getPicture(id));
   let item = [pictureData].find(() => id);
 
-  const { title, describe, img, user, like, view } = item.contents;
+  const { title, describe, img, user, view } = item.contents;
 
   if (item === 'hasError') {
     return <div>Error : {console.log(item.error)}</div>;

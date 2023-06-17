@@ -1,16 +1,30 @@
 import styles from './Comment.module.css';
 import AnswerEditor from 'components/Common/AnswerEditor/AnswerEditor';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import { getPictureComment } from '@store/getPictureCommentData';
 import WriteInput from 'components/Common/WriteInput/WriteInput';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 function Comment() {
   const { id } = useParams();
 
   const pictureCommentData = useRecoilState(getPictureComment(id));
-  const [comment, setComment] = useState([...pictureCommentData]);
+  const commentData = pictureCommentData[0];
+
+  const [comment, setComment] = useState(commentData.commentDetails);
+
+  // console.log(comment);
+
+  const [empty, setEmpty] = useState(true);
+
+  useEffect(() => {
+    if (comment.length > 0) {
+      setEmpty(false);
+    } else if (comment.length === 0) {
+      setEmpty(true);
+    }
+  }, []);
 
   return (
     <>
@@ -20,9 +34,17 @@ function Comment() {
         <WriteInput comment="true" />
       </div>
 
-      {comment.map((item) => {
-        return <AnswerEditor key={item.id} item={item} />;
-      })}
+      {empty === true ? (
+        <>
+          <p className={styles.empty}>댓글이 없습니다 ㅠ_ㅠ</p>
+        </>
+      ) : (
+        <>
+          {comment.map((item, index) => {
+            return <AnswerEditor key={index} item={item} />;
+          })}
+        </>
+      )}
     </>
   );
 }
