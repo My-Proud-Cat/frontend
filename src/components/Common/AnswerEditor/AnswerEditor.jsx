@@ -7,12 +7,10 @@ import { useRecoilState } from 'recoil';
 function AnswerEditor({ item }) {
   const { id } = useParams();
 
-  const commentData = useRecoilState(getPictureComment(id));
-  item = [commentData].find(() => id);
+  useRecoilState(getPictureComment(id));
+  // item = [commentData].find(() => id);
 
-  const { user, commentDetails } = item[0];
-
-  // console.log(item[0]);
+  // console.log(item.content);
 
   return (
     <>
@@ -27,7 +25,7 @@ function AnswerEditor({ item }) {
           </div>
         </div>
 
-        <p className={styles.answer}>d</p>
+        <p className={styles.answer}>{item.content}</p>
       </div>
     </>
   );

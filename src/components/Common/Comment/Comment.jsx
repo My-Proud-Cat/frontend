@@ -14,8 +14,6 @@ function Comment() {
 
   const [comment, setComment] = useState(commentData.commentDetails);
 
-  // console.log(comment);
-
   const [empty, setEmpty] = useState(true);
 
   useEffect(() => {
