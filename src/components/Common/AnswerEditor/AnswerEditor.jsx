@@ -8,9 +8,6 @@ function AnswerEditor({ item }) {
   const { id } = useParams();
 
   useRecoilState(getPictureComment(id));
-  // item = [commentData].find(() => id);
-
-  // console.log(item.content);
 
   return (
     <>
@@ -20,7 +17,7 @@ function AnswerEditor({ item }) {
           <p className={styles.name}>닉넴</p>
 
           <div className={styles.position}>
-            <DotButton />
+            <DotButton item={item} />
             <p className={styles.date}>2023.05.27</p>
           </div>
         </div>

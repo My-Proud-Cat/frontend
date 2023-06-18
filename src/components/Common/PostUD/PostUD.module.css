@@ -1,0 +1,20 @@
+.layout {
+  display: flex;
+  flex-flow: row nowrap;
+  font-size: 14px;
+}
+
+.update {
+  background-color: transparent;
+  border: none;
+}
+
+.delete {
+  background-color: transparent;
+  border: none;
+}
+
+.update:hover,
+.delete:hover {
+  color: var(--primary);
+}

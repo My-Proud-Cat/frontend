@@ -1,6 +1,7 @@
 import styles from './PictureDetail.module.css';
 import Banner from 'components/Common/Banner/Banner';
 import Comment from 'components/Common/Comment/Comment';
+import PostUD from 'components/Common/PostUD/PostUD';
 import { ReactComponent as Heart } from 'assets/heart.svg';
 import { useRecoilValueLoadable } from 'recoil';
 import { getPicture } from '@store/getPictureData';
@@ -42,8 +43,9 @@ function PictureDetail() {
           <p className={styles.title}>{title}</p>
 
           <div className={styles.info}>
-            <p className={styles.nickname}>{user?.nickname}</p>
-            <p>2023.05.20</p>
+            <p className={styles.nickname}>임시</p>
+            <p className={styles.date}>2023.05.20</p>
+            <PostUD />
           </div>
         </div>
 

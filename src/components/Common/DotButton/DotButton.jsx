@@ -6,10 +6,10 @@ import { getPictureComment } from '@store/getPictureCommentData';
 import axios from 'axios';
 import { useParams } from 'react-router';
 
-const DotButton = () => {
+const DotButton = ({ item }) => {
   const { id } = useParams();
 
-  // const [comments, setComments] = useRecoilState(getPictureComment);
+  const [comments, setComments] = useRecoilState(getPictureComment(id));
 
   const [state, setState] = useState('hidden');
   const [update, setUpdate] = useState(false);
@@ -22,7 +22,7 @@ const DotButton = () => {
     }
   };
 
-  /* const clickUpdate = async () => {
+  const clickUpdate = async () => {
     setUpdate(true);
 
     if (update === true) {
@@ -32,11 +32,11 @@ const DotButton = () => {
     }
   };
   const clickDelete = async () => {
-    let ok = window.confirm('삭제하시나요?');
+    const ok = window.confirm('삭제 하시겠습니까?');
 
     if (ok) {
       await axios
-        .delete(`http://localhost:8080/${id}/comment`, {
+        .delete(`http://localhost:8080/proudcat/${id}/comment/${item.id}`, {
           data: {
             id: comments.id,
           },
@@ -49,7 +49,7 @@ const DotButton = () => {
         });
     }
   };
- */
+
   return (
     <div className={styles.layout}>
       <Dot
@@ -75,7 +75,7 @@ const DotButton = () => {
         <button
           name="delete"
           onClick={() => {
-            // clickDelete();
+            clickDelete();
           }}
         >
           삭제

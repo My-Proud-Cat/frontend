@@ -17,14 +17,18 @@
 
 .info {
   display: flex;
-}
-
-.nickname {
+  align-items: center;
 }
 
 .nickname::after {
   content: '•';
   padding: 0 10px 0 10px;
+  color: var(--gray-500);
+}
+
+.date::after {
+  content: '•';
+  padding: 0 4px 0 11px;
   color: var(--gray-500);
 }
 
