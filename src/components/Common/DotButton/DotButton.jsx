@@ -36,11 +36,7 @@ const DotButton = ({ item }) => {
 
     if (ok) {
       await axios
-        .delete(`http://localhost:8080/proudcat/${id}/comment/${item.id}`, {
-          data: {
-            id: comments.id,
-          },
-        })
+        .delete(`http://localhost:8080/proudcat/${id}/comment/${item.id}`)
         .then(() => {
           location.reload();
         })
