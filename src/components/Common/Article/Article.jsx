@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import styles from './Article.module.css';
 
 function Article({ item }) {
-  const { img, title, describe, user, view, heartCnt, id } = item;
+  const { title, user, view, heartCnt, id } = item;
 
   return (
     <div className={styles.layout}>
@@ -12,7 +12,6 @@ function Article({ item }) {
         <Link to={`/${id}`} className={styles.title}>
           {title}
         </Link>
-        <p className={styles.describe}>{describe}</p>
 
         <div className={styles.position}>
           <p className={styles.nickname}>{user?.nickname}</p>

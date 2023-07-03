@@ -16,10 +16,10 @@ function PictureWirte() {
 
   async function onClickButton() {
     await axios
-      .post('http://localhost:8080/picture', {
+      .post('http://localhost:8080/picture/test', {
         title: titleField,
         describe: contentField,
-        img: '',
+        image: '',
         /* user: {
           nickname: '닉네임',
           user_id: '임시 아이디',
@@ -30,8 +30,7 @@ function PictureWirte() {
         window.location.reload();
       })
       .catch((err) => {
-        // console.log(err);
-        console.log(location.origin);
+        // console.log(location.origin);
       });
   }
 

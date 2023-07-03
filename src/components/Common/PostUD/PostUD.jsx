@@ -3,8 +3,10 @@ import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 
 const PostUD = () => {
-  const { id } = useParams;
+  const { id } = useParams();
   const navigate = useNavigate();
+
+  console.log(id);
 
   const clickDelete = async () => {
     const ok = window.confirm('삭제 하시겠습니까?');

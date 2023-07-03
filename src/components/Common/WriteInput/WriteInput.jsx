@@ -26,14 +26,18 @@ function WriteInput({ comment }) {
     setContent(e.target.value);
   };
 
-  const commentField = document.getElementById('comment');
+  const commentField = document.querySelector('#comment');
+
+  const onChangeTest = () => {
+    console.log(commentField.value);
+  };
 
   const onClickCommentButton = async () => {
     if (commentField.value.length === 0) {
       window.alert('내용을 입력해주세요');
     } else {
       await axios
-        .post(`http://localhost:8080/proudcat/${id}`, {
+        .post(`http://localhost:8080/proudcat/${id}/comments`, {
           /* user: {
           nickname: '테스트',
           user_id: '임시 아이디',
@@ -59,6 +63,9 @@ function WriteInput({ comment }) {
             type="text"
             placeholder="댓글을 입력해주세요"
             className={styles.form}
+            onChange={() => {
+              onChangeTest();
+            }}
           />
 
           <SubmitButton

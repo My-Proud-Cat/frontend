@@ -13,9 +13,12 @@ export const getPictureList = selector({
   get: async ({ get }) => {
     const searchParams = get(getPictureInitialData);
 
-    const response = await axios.get('http://localhost:8080/picture', {
-      params: searchParams,
-    });
+    const response = await axios.get(
+      'http://localhost:8080/picture/list/paging',
+      {
+        params: searchParams,
+      },
+    );
 
     return response.data;
   },
@@ -28,9 +31,12 @@ export const getPicture = selectorFamily({
     async ({ get }) => {
       const searchParams = get(getPictureInitialData);
 
-      const response = await axios.get(`http://localhost:8080/picture/${id}`, {
-        params: searchParams,
-      });
+      const response = await axios.get(
+        `http://localhost:8080/picture/${id}/comments`,
+        {
+          params: searchParams,
+        },
+      );
 
       return response.data;
     },
