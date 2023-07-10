@@ -6,6 +6,7 @@ import { useRecoilState } from 'recoil';
 import { titleState } from '@store/getPictureTitleData';
 import { contentState } from '@store/getPictureContentData';
 import { useParams } from 'react-router-dom';
+import { useRef, useState } from 'react';
 
 /* 텍스트 지우는 함수 */
 function clearText() {
@@ -17,6 +18,7 @@ function WriteInput({ comment }) {
 
   const [title, setTitle] = useRecoilState(titleState);
   const [content, setContent] = useRecoilState(contentState);
+  const [commentField, setCommentField] = useState(null);
 
   const onChangeTitle = (e) => {
     setTitle(e.target.value);
@@ -26,14 +28,12 @@ function WriteInput({ comment }) {
     setContent(e.target.value);
   };
 
-  const commentField = document.querySelector('#comment');
-
-  const onChangeTest = () => {
-    console.log(commentField.value);
+  const onChangeComment = (e) => {
+    setCommentField(e.target.value);
   };
 
   const onClickCommentButton = async () => {
-    if (commentField.value.length === 0) {
+    if (commentField === '') {
       window.alert('내용을 입력해주세요');
     } else {
       await axios
@@ -42,7 +42,7 @@ function WriteInput({ comment }) {
           nickname: '테스트',
           user_id: '임시 아이디',
         }, */
-          content: commentField.value,
+          content: commentField,
         })
         .then(() => {
           clearText();
@@ -54,26 +54,29 @@ function WriteInput({ comment }) {
     }
   };
 
+  const fileInputRef = useRef(null);
+
+  const onClickFileInput = () => {
+    fileInputRef.current.click(); // 버튼을 클릭하면 input을 참조해서 input이 클릭되게 함 (원래는 눌러도 아무 반응 x - input이 아니라 버튼이 눌린 걸로 판정되기때문)
+  };
+
+  const onChangeFile = () => {
+    console.log();
+  };
+
   return (
     <>
       {comment ? (
         <div>
           <textarea
             id="comment"
-            type="text"
-            placeholder="댓글을 입력해주세요"
             className={styles.form}
-            onChange={() => {
-              onChangeTest();
-            }}
+            placeholder="댓글을 입력해주세요"
+            onChange={onChangeComment}
+            value={commentField}
           />
 
-          <SubmitButton
-            comment="true"
-            onClick={() => {
-              onClickCommentButton();
-            }}
-          />
+          <SubmitButton comment="true" onClick={onClickCommentButton} />
         </div>
       ) : (
         <div>
@@ -98,8 +101,22 @@ function WriteInput({ comment }) {
             </div>
 
             <div className={styles.fileUpload}>
-              <label htmlFor="file">사진 추가하기</label>
-              <input id="file" type="file" />
+              <button
+                htmlFor="file"
+                onClick={() => {
+                  onClickFileInput();
+                }}
+              >
+                사진 추가하기
+              </button>
+              <input
+                type="file"
+                accept="image/jpg, image/jpeg, image/png"
+                ref={fileInputRef}
+                onChange={() => {
+                  onChangeFile();
+                }}
+              />
             </div>
           </div>
         </div>

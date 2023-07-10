@@ -27,7 +27,7 @@ function PictureWirte() {
       })
       .then(() => {
         navigate('/');
-        window.location.reload();
+        location.reload();
       })
       .catch((err) => {
         // console.log(location.origin);
