@@ -2,10 +2,10 @@ import { string } from 'prop-types';
 import styles from './WriteInput.module.css';
 import axios from 'axios';
 import SubmitButton from 'components/Common/SubmitButton/SubmitButton';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { titleState } from '@store/getPictureTitleData';
 import { contentState } from '@store/getPictureContentData';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useRef, useState } from 'react';
 
 /* 텍스트 지우는 함수 */
@@ -15,10 +15,36 @@ function clearText() {
 
 function WriteInput({ comment }) {
   const { id } = useParams();
+  const navigate = useNavigate();
+
+  const titleField = useRecoilValue(titleState);
+  const contentField = useRecoilValue(contentState);
 
   const [title, setTitle] = useRecoilState(titleState);
   const [content, setContent] = useRecoilState(contentState);
   const [commentField, setCommentField] = useState(null);
+
+  /* ------------------------------------ 글 ----------------------------------- */
+
+  async function onClickPostButton() {
+    await axios
+      .post('http://localhost:8080/picture/test', {
+        title: titleField,
+        describe: contentField,
+        image: '',
+        /* user: {
+          nickname: '닉네임',
+          user_id: '임시 아이디',
+        }, */
+      })
+      .then(() => {
+        navigate('/');
+        location.reload();
+      })
+      .catch((err) => {
+        // console.log(location.origin);
+      });
+  }
 
   const onChangeTitle = (e) => {
     setTitle(e.target.value);
@@ -28,9 +54,7 @@ function WriteInput({ comment }) {
     setContent(e.target.value);
   };
 
-  const onChangeComment = (e) => {
-    setCommentField(e.target.value);
-  };
+  /* ----------------------------------- 댓글 ----------------------------------- */
 
   const onClickCommentButton = async () => {
     if (commentField === '') {
@@ -53,6 +77,12 @@ function WriteInput({ comment }) {
         });
     }
   };
+
+  const onChangeComment = (e) => {
+    setCommentField(e.target.value);
+  };
+
+  /* ----------------------------------- 파일 ----------------------------------- */
 
   const fileInputRef = useRef(null);
 
@@ -119,6 +149,8 @@ function WriteInput({ comment }) {
               />
             </div>
           </div>
+
+          <SubmitButton onClick={onClickPostButton} />
         </div>
       )}
     </>
