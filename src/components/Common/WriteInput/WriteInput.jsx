@@ -6,7 +6,7 @@ import { useRecoilState, useRecoilValue } from 'recoil';
 import { titleState } from '@store/getPictureTitleData';
 import { contentState } from '@store/getPictureContentData';
 import { useParams, useNavigate } from 'react-router-dom';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 /* 텍스트 지우는 함수 */
 function clearText() {
@@ -22,28 +22,41 @@ function WriteInput({ comment }) {
 
   const [title, setTitle] = useRecoilState(titleState);
   const [content, setContent] = useRecoilState(contentState);
-  const [commentField, setCommentField] = useState(null);
+
+  const formData = new FormData();
 
   /* ------------------------------------ 글 ----------------------------------- */
 
-  async function onClickPostButton() {
+  useEffect(() => {});
+
+  async function onClickPostButton(e) {
+    // formData.append('image', e.target.files[0]);
+
+    const postData = {
+      title: titleField,
+      describe: contentField,
+    };
+
+    formData.append(
+      'data',
+      new Blob([JSON.stringify(postData)], { type: 'application/json' }),
+    );
+
     await axios
-      .post('http://localhost:8080/picture/test', {
-        title: titleField,
-        describe: contentField,
-        image: '',
-        /* user: {
-          nickname: '닉네임',
-          user_id: '임시 아이디',
-        }, */
+      .post('http://localhost:8080/picture', formData, {
+        headers: { 'Content-Type': `application/json` },
       })
       .then(() => {
         navigate('/');
         location.reload();
       })
       .catch((err) => {
-        // console.log(location.origin);
+        console.log(err);
       });
+
+    /* for (let value of formData.values()) {
+      console.log(value);
+    } */
   }
 
   const onChangeTitle = (e) => {
@@ -54,7 +67,33 @@ function WriteInput({ comment }) {
     setContent(e.target.value);
   };
 
+  // title: titleField,
+  // describe: contentField,
+  // image: formData,
+  /* user: {
+          nickname: '닉네임',
+          user_id: '임시 아이디',
+        }, */
+
+  /* ----------------------------------- 파일 ----------------------------------- */
+
+  const fileInputRef = useRef(null);
+
+  const [image, setImage] = useState([]);
+  const [imgPreview, setImgPreview] = useState(null);
+
+  const onClickFileInput = () => {
+    fileInputRef.current.click(); // 버튼을 클릭하면 input을 참조해서 input이 클릭되게 함 (원래는 눌러도 아무 반응 x - input이 아니라 버튼이 눌린 걸로 판정되기때문)
+  };
+
+  const onChangeFile = (e) => {
+    console.log(e.target.files[0]);
+    // setImage(e.target.files[0]);
+  };
+
   /* ----------------------------------- 댓글 ----------------------------------- */
+
+  const [commentField, setCommentField] = useState(null);
 
   const onClickCommentButton = async () => {
     if (commentField === '') {
@@ -80,18 +119,6 @@ function WriteInput({ comment }) {
 
   const onChangeComment = (e) => {
     setCommentField(e.target.value);
-  };
-
-  /* ----------------------------------- 파일 ----------------------------------- */
-
-  const fileInputRef = useRef(null);
-
-  const onClickFileInput = () => {
-    fileInputRef.current.click(); // 버튼을 클릭하면 input을 참조해서 input이 클릭되게 함 (원래는 눌러도 아무 반응 x - input이 아니라 버튼이 눌린 걸로 판정되기때문)
-  };
-
-  const onChangeFile = () => {
-    console.log();
   };
 
   return (
@@ -131,21 +158,13 @@ function WriteInput({ comment }) {
             </div>
 
             <div className={styles.fileUpload}>
-              <button
-                htmlFor="file"
-                onClick={() => {
-                  onClickFileInput();
-                }}
-              >
-                사진 추가하기
-              </button>
+              <button onClick={onClickFileInput}>사진 추가하기</button>
               <input
+                id="file"
                 type="file"
                 accept="image/jpg, image/jpeg, image/png"
                 ref={fileInputRef}
-                onChange={() => {
-                  onChangeFile();
-                }}
+                onChange={onChangeFile}
               />
             </div>
           </div>
