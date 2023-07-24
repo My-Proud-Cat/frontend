@@ -6,7 +6,7 @@ import { useRecoilState, useRecoilValue } from 'recoil';
 import { titleState } from '@store/getPictureTitleData';
 import { contentState } from '@store/getPictureContentData';
 import { useParams, useNavigate } from 'react-router-dom';
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 
 /* 텍스트 지우는 함수 */
 function clearText() {
@@ -23,24 +23,41 @@ function WriteInput({ comment }) {
   const [title, setTitle] = useRecoilState(titleState);
   const [content, setContent] = useRecoilState(contentState);
 
-  const formData = new FormData();
+  /* ----------------------------------- 파일 ----------------------------------- */
+
+  const fileInputRef = useRef(null);
+
+  const [image, setImage] = useState();
+  const [imgPreview, setImgPreview] = useState(null);
+
+  const onClickFileInput = () => {
+    fileInputRef.current.click(); // 버튼을 클릭하면 input을 참조해서 input이 클릭되게 함 (원래는 눌러도 아무 반응 x - input이 아니라 버튼이 눌린 걸로 판정되기때문)
+  };
+
+  const onChangeFile = (e) => {
+    if (e.target.files[0] !== null) {
+      setImage(e.target.files[0]);
+    }
+  };
 
   /* ------------------------------------ 글 ----------------------------------- */
 
-  useEffect(() => {});
+  const formData = new FormData();
 
   async function onClickPostButton(e) {
-    // formData.append('image', e.target.files[0]);
+    formData.append('file', image);
 
     const postData = {
       title: titleField,
       describe: contentField,
     };
 
-    formData.append(
-      'data',
-      new Blob([JSON.stringify(postData)], { type: 'application/json' }),
-    );
+    const json = JSON.stringify(postData);
+    const blob = new Blob([json], {
+      type: 'application/json',
+    });
+
+    formData.append('data', blob);
 
     await axios
       .post('http://localhost:8080/picture', formData, {
@@ -54,9 +71,9 @@ function WriteInput({ comment }) {
         console.log(err);
       });
 
-    /* for (let value of formData.values()) {
+    for (let value of formData.values()) {
       console.log(value);
-    } */
+    }
   }
 
   const onChangeTitle = (e) => {
@@ -65,30 +82,6 @@ function WriteInput({ comment }) {
 
   const onChangeContent = (e) => {
     setContent(e.target.value);
-  };
-
-  // title: titleField,
-  // describe: contentField,
-  // image: formData,
-  /* user: {
-          nickname: '닉네임',
-          user_id: '임시 아이디',
-        }, */
-
-  /* ----------------------------------- 파일 ----------------------------------- */
-
-  const fileInputRef = useRef(null);
-
-  const [image, setImage] = useState([]);
-  const [imgPreview, setImgPreview] = useState(null);
-
-  const onClickFileInput = () => {
-    fileInputRef.current.click(); // 버튼을 클릭하면 input을 참조해서 input이 클릭되게 함 (원래는 눌러도 아무 반응 x - input이 아니라 버튼이 눌린 걸로 판정되기때문)
-  };
-
-  const onChangeFile = (e) => {
-    console.log(e.target.files[0]);
-    // setImage(e.target.files[0]);
   };
 
   /* ----------------------------------- 댓글 ----------------------------------- */
