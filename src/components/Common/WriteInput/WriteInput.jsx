@@ -45,7 +45,9 @@ function WriteInput({ comment }) {
   const formData = new FormData();
 
   async function onClickPostButton(e) {
-    formData.append('file', image);
+    e.preventDefault();
+
+    formData.append('image', image);
 
     const postData = {
       title: titleField,
@@ -57,11 +59,11 @@ function WriteInput({ comment }) {
       type: 'application/json',
     });
 
-    formData.append('data', blob);
+    formData.append('request', blob);
 
     await axios
       .post('http://localhost:8080/picture', formData, {
-        headers: { 'Content-Type': `application/json` },
+        headers: { 'Content-Type': 'multipart/form-data' },
       })
       .then(() => {
         navigate('/');
@@ -70,10 +72,6 @@ function WriteInput({ comment }) {
       .catch((err) => {
         console.log(err);
       });
-
-    for (let value of formData.values()) {
-      console.log(value);
-    }
   }
 
   const onChangeTitle = (e) => {
@@ -132,37 +130,40 @@ function WriteInput({ comment }) {
         <div>
           <p>글 작성</p>
 
-          <div className={styles.layout}>
-            <div className={styles.input}>
-              <input
-                id="title"
-                className={styles.title}
-                placeholder="제목을 입력해주세요"
-                onChange={onChangeTitle}
-                value={title}
-              />
-              <textarea
-                id="content"
-                className={styles.content}
-                placeholder="내용을 입력해주세요"
-                onChange={onChangeContent}
-                value={content}
-              />
-            </div>
+          <form onSubmit={onClickPostButton} encType="multipart/form-data">
+            <div className={styles.layout}>
+              <div className={styles.input}>
+                <input
+                  id="title"
+                  className={styles.title}
+                  placeholder="제목을 입력해주세요"
+                  onChange={onChangeTitle}
+                  value={title}
+                />
+                <textarea
+                  id="content"
+                  className={styles.content}
+                  placeholder="내용을 입력해주세요"
+                  onChange={onChangeContent}
+                  value={content}
+                />
+              </div>
 
-            <div className={styles.fileUpload}>
-              <button onClick={onClickFileInput}>사진 추가하기</button>
-              <input
-                id="file"
-                type="file"
-                accept="image/jpg, image/jpeg, image/png"
-                ref={fileInputRef}
-                onChange={onChangeFile}
-              />
+              <div className={styles.fileUpload}>
+                <button onClick={onClickFileInput} type="button">
+                  사진 추가하기
+                </button>
+                <input
+                  id="file"
+                  type="file"
+                  accept="image/jpg, image/jpeg, image/png"
+                  ref={fileInputRef}
+                  onChange={onChangeFile}
+                />
+              </div>
             </div>
-          </div>
-
-          <SubmitButton onClick={onClickPostButton} />
+            <SubmitButton />
+          </form>
         </div>
       )}
     </>
