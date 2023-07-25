@@ -2,12 +2,12 @@ import { Link } from 'react-router-dom';
 import styles from './Article.module.css';
 
 function Article({ item }) {
-  const { title, user, view, heartCnt, id } = item;
+  const { title, user, view, heartCnt, id, fileData } = item;
 
   return (
     <div className={styles.layout}>
       <div>
-        <p className={styles.img}></p>
+        <p className={styles.img}>{fileData}</p>
 
         <Link to={`/${id}`} className={styles.title}>
           {title}

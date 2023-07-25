@@ -121,7 +121,7 @@ function WriteInput({ comment }) {
             className={styles.form}
             placeholder="댓글을 입력해주세요"
             onChange={onChangeComment}
-            value={commentField}
+            value={commentField || ''}
           />
 
           <SubmitButton comment="true" onClick={onClickCommentButton} />
@@ -145,7 +145,7 @@ function WriteInput({ comment }) {
                   className={styles.content}
                   placeholder="내용을 입력해주세요"
                   onChange={onChangeContent}
-                  value={content}
+                  value={content || ''}
                 />
               </div>
 
