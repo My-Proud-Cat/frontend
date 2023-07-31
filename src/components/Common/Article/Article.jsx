@@ -7,7 +7,7 @@ function Article({ item }) {
   return (
     <div className={styles.layout}>
       <div>
-        <p className={styles.img}>{fileData}</p>
+        <img src="" alt="" className={styles.img} />
 
         <Link to={`/${id}`} className={styles.title}>
           {title}

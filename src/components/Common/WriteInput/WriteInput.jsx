@@ -37,6 +37,9 @@ function WriteInput({ comment }) {
   const onChangeFile = (e) => {
     if (e.target.files[0] !== null) {
       setImage(e.target.files[0]);
+
+      URL.revokeObjectURL(image);
+      // setImgPreview(URL.createObjectURL(image));
     }
   };
 
@@ -48,6 +51,8 @@ function WriteInput({ comment }) {
     e.preventDefault();
 
     formData.append('image', image);
+
+    const url = URL.createObjectURL(image);
 
     const postData = {
       title: titleField,
@@ -62,16 +67,26 @@ function WriteInput({ comment }) {
     formData.append('request', blob);
 
     await axios
-      .post('http://localhost:8080/picture', formData, {
-        headers: { 'Content-Type': 'multipart/form-data' },
-      })
+      .post(
+        'http://localhost:8080/picture',
+        // { formData, url },
+        formData,
+        {
+          headers: { 'Content-Type': 'multipart/form-data' },
+        },
+      )
       .then(() => {
-        navigate('/');
-        location.reload();
+        // navigate('/');
+        // location.reload();
+        console.log(URL.createObjectURL(image));
       })
       .catch((err) => {
         console.log(err);
       });
+
+    for (let key of formData.entries()) {
+      console.log(key);
+    }
   }
 
   const onChangeTitle = (e) => {
@@ -150,6 +165,7 @@ function WriteInput({ comment }) {
               </div>
 
               <div className={styles.fileUpload}>
+                {/* <img src={imgPreview} alt="" srcSet="" /> */}
                 <button onClick={onClickFileInput} type="button">
                   사진 추가하기
                 </button>

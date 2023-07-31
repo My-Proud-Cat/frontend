@@ -17,6 +17,7 @@ export const getPictureList = selector({
       'http://localhost:8080/picture/list/paging',
       {
         params: searchParams,
+        // responseType: 'blob'
       },
     );
 
