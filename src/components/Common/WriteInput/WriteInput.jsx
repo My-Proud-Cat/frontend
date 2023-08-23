@@ -28,7 +28,7 @@ function WriteInput({ comment }) {
   const fileInputRef = useRef(null);
 
   const [image, setImage] = useState();
-  const [imgPreview, setImgPreview] = useState(null);
+  const [imgPreview, setImgPreview] = useState('');
 
   const onClickFileInput = () => {
     fileInputRef.current.click(); // 버튼을 클릭하면 input을 참조해서 input이 클릭되게 함 (원래는 눌러도 아무 반응 x - input이 아니라 버튼이 눌린 걸로 판정되기때문)
@@ -38,8 +38,17 @@ function WriteInput({ comment }) {
     if (e.target.files[0] !== null) {
       setImage(e.target.files[0]);
 
-      URL.revokeObjectURL(image);
-      // setImgPreview(URL.createObjectURL(image));
+      const url = URL.createObjectURL(new Blob([new ArrayBuffer(image)]));
+
+      setImgPreview(URL.createObjectURL(e.target.files[0]));
+
+      // const reader = new FileReader();
+      // reader.readAsDataURL(image);
+      // reader.onload = () => {
+      //   setImgPreview(e.target.result);
+      // };
+
+      // setImgPreview(reader.result);
     }
   };
 
@@ -47,24 +56,22 @@ function WriteInput({ comment }) {
 
   const formData = new FormData();
 
+  formData.append('image', image);
+
+  const postData = {
+    title: titleField,
+    describe: contentField,
+  };
+
+  const json = JSON.stringify(postData);
+  const blob = new Blob([json], {
+    type: 'application/json',
+  });
+
+  formData.append('request', blob);
+
   async function onClickPostButton(e) {
     e.preventDefault();
-
-    formData.append('image', image);
-
-    const url = URL.createObjectURL(image);
-
-    const postData = {
-      title: titleField,
-      describe: contentField,
-    };
-
-    const json = JSON.stringify(postData);
-    const blob = new Blob([json], {
-      type: 'application/json',
-    });
-
-    formData.append('request', blob);
 
     await axios
       .post(
@@ -78,7 +85,7 @@ function WriteInput({ comment }) {
       .then(() => {
         // navigate('/');
         // location.reload();
-        console.log(URL.createObjectURL(image));
+        console.log(imgPreview);
       })
       .catch((err) => {
         console.log(err);
@@ -165,7 +172,7 @@ function WriteInput({ comment }) {
               </div>
 
               <div className={styles.fileUpload}>
-                {/* <img src={imgPreview} alt="" srcSet="" /> */}
+                <img src={imgPreview} alt="미리보기" />
                 <button onClick={onClickFileInput} type="button">
                   사진 추가하기
                 </button>
