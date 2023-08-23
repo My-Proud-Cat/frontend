@@ -14,7 +14,7 @@ function PictureList() {
   const [posts, setPosts] = useState([...pictureData]);
 
   const [currentPage, setCurrentPage] = useState(1); // 현재 페이지
-  const [postsPerPage, setPostsPerPage] = useState(4); // 한 페이지에 보일 게시글 수
+  const [postsPerPage, setPostsPerPage] = useState(8); // 한 페이지에 보일 게시글 수
 
   const indexOfLast = currentPage * postsPerPage;
   const indexOfFirst = indexOfLast - postsPerPage;

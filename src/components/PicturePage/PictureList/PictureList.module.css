@@ -44,7 +44,9 @@
 }
 
 .post {
-  display: flex;
-  flex-flow: row nowrap;
-  gap: 45.5px;
+  margin: 0 auto;
+  column-gap: 45px;
+  max-width: 1024px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
 }
