@@ -11,6 +11,7 @@
   width: 220px;
   height: 150px;
   margin-bottom: 13px;
+  object-fit: cover;
 }
 
 .img:hover {

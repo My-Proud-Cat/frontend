@@ -2,11 +2,12 @@ import styles from './PictureDetail.module.css';
 import Banner from 'components/Common/Banner/Banner';
 import Comment from 'components/Common/Comment/Comment';
 import PostUD from 'components/Common/PostUD/PostUD';
+import axios from 'axios';
 import { ReactComponent as Heart } from 'assets/heart.svg';
 import { useRecoilValueLoadable } from 'recoil';
 import { getPicture } from '@store/getPictureData';
 import { useParams } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function PictureDetail() {
   const { id } = useParams();
@@ -15,6 +16,24 @@ function PictureDetail() {
 
   const pictureData = useRecoilValueLoadable(getPicture(id));
   let item = [pictureData].find(() => id);
+
+  const [imageUrl, setImageUrl] = useState('');
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8080/proudcat/api/image-file-path/${id}`, {
+        responseType: 'arraybuffer',
+      })
+      .then((response) => {
+        const url = URL.createObjectURL(
+          new Blob([response.data], { type: 'image/png' }),
+        );
+        setImageUrl(url);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
 
   const { title, describe, img, user, view } = item.contents;
 
@@ -52,7 +71,7 @@ function PictureDetail() {
         <p className={styles.content}>{describe}</p>
 
         <div className={styles.main}>
-          <p className={styles.picture}></p>
+          <img src={imageUrl} alt="이미지" className={styles.picture} />
 
           <button
             className={likeState === '' ? styles.like_no : styles.like}

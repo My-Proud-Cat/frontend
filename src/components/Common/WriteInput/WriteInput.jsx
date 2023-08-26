@@ -34,21 +34,11 @@ function WriteInput({ comment }) {
     fileInputRef.current.click(); // 버튼을 클릭하면 input을 참조해서 input이 클릭되게 함 (원래는 눌러도 아무 반응 x - input이 아니라 버튼이 눌린 걸로 판정되기때문)
   };
 
-  const onChangeFile = (e) => {
+  const onChangeFile = async (e) => {
     if (e.target.files[0] !== null) {
       setImage(e.target.files[0]);
 
-      const url = URL.createObjectURL(new Blob([new ArrayBuffer(image)]));
-
       setImgPreview(URL.createObjectURL(e.target.files[0]));
-
-      // const reader = new FileReader();
-      // reader.readAsDataURL(image);
-      // reader.onload = () => {
-      //   setImgPreview(e.target.result);
-      // };
-
-      // setImgPreview(reader.result);
     }
   };
 
@@ -74,17 +64,12 @@ function WriteInput({ comment }) {
     e.preventDefault();
 
     await axios
-      .post(
-        'http://localhost:8080/picture',
-        // { formData, url },
-        formData,
-        {
-          headers: { 'Content-Type': 'multipart/form-data' },
-        },
-      )
+      .post('http://localhost:8080/picture', formData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+      })
       .then(() => {
-        // navigate('/');
-        // location.reload();
+        navigate('/');
+        location.reload();
         console.log(imgPreview);
       })
       .catch((err) => {
