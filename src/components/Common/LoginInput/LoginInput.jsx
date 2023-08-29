@@ -1,9 +1,8 @@
 import styles from './LoginInput.module.css';
 import axios from 'axios';
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilState, useRecoilValue } from 'recoil';
-import { emailState, passwordState } from '@store/authUserState';
+import { emailState, passwordState } from '@store/authUserLogin';
 
 const LoginInput = () => {
   const navigate = useNavigate();
