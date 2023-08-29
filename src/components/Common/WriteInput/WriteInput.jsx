@@ -99,10 +99,6 @@ function WriteInput({ comment }) {
     } else {
       await axios
         .post(`http://localhost:8080/proudcat/${id}/comments`, {
-          /* user: {
-          nickname: '테스트',
-          user_id: '임시 아이디',
-        }, */
           content: commentField,
         })
         .then(() => {

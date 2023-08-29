@@ -16,14 +16,14 @@
 }
 
 .input {
-  width: 344px;
+  width: 317px;
   height: 50px;
   border: var(--gray-300) solid 1px;
   border-radius: 5px;
+  padding: 0 15px 0 15px;
 }
 
 .input::placeholder {
-  padding: 0 15px 0 15px;
   font-size: 14px;
   color: var(--gray-300);
 }
