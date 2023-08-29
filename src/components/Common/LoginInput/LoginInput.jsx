@@ -29,14 +29,25 @@ const LoginInput = () => {
 
   const onClickLoginButton = async () => {
     await axios
-      .post('http://localhost:8080/auth/login', userData, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
+      .post('http://localhost:8080/auth/login', userData)
       .then((response) => {
-        if (response.ACCESS_TOKEN) {
-          localStorage.setItem('accessToken');
+        console.log(response.data);
+
+        if (response.data.accessToken && response.data.refreshToken) {
+          localStorage.setItem('accessToken', response.data.accessToken);
+          localStorage.setItem('refreshToken', response.data.refreshToken);
+
+          axios.defaults.headers.common[
+            'Authorization'
+          ] = `Bearer ${response.data.accessToken}`;
+
+          console.log(axios.defaults.headers.common);
+
+          /* return axios.post('http://localhost:8080/auth/login', {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          }); */
         }
       })
       .then(() => {
@@ -45,7 +56,7 @@ const LoginInput = () => {
         console.log('로그인 성공');
       })
       .catch((err) => {
-        console.log(err.response);
+        console.log(err);
       });
   };
 
