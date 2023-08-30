@@ -41,12 +41,6 @@ const LoginInput = () => {
           ] = `Bearer ${response.data.accessToken}`;
 
           console.log(axios.defaults.headers.common);
-
-          /* return axios.post('http://localhost:8080/auth/login', {
-            headers: {
-              Authorization: `Bearer ${accessToken}`,
-            },
-          }); */
         }
       })
       .then(() => {
@@ -56,6 +50,12 @@ const LoginInput = () => {
       })
       .catch((err) => {
         console.log(err);
+      });
+
+    return await axios
+      .get('http://localhost:8080/auth/testLogin')
+      .then((response) => {
+        console.log(response.data);
       });
   };
 
