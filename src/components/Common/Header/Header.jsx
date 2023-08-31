@@ -39,7 +39,7 @@ function Header() {
 
         {token === true ? (
           <div className={styles.category}>
-            <LinkHover to="/login">로그인</LinkHover>
+            <LinkHover to="/login">닉네임</LinkHover>
             <LinkHover
               to="/signup"
               onClick={() => {
