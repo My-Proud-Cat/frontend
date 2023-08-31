@@ -2,7 +2,7 @@ import styles from './LoginInput.module.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilState, useRecoilValue } from 'recoil';
-import { emailState, passwordState } from '@store/authUserLogin';
+import { authState, emailState, passwordState } from '@store/authUserLogin';
 
 const LoginInput = () => {
   const navigate = useNavigate();
@@ -39,14 +39,11 @@ const LoginInput = () => {
           axios.defaults.headers.common[
             'Authorization'
           ] = `Bearer ${response.data.accessToken}`;
-
-          console.log(axios.defaults.headers.common);
         }
       })
       .then(() => {
-        // navigate('/');
-        // location.reload();
-        console.log('로그인 성공');
+        navigate('/');
+        location.reload();
       })
       .catch((err) => {
         console.log(err);
