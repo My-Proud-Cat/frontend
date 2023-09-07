@@ -2,7 +2,8 @@ import styles from './LoginInput.module.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilState, useRecoilValue } from 'recoil';
-import { authState, emailState, passwordState } from '@store/authUserLogin';
+import { emailState, passwordState } from '@store/authUserLogin';
+import { axiosInstance } from 'custom/authToken';
 
 const LoginInput = () => {
   const navigate = useNavigate();
@@ -27,7 +28,7 @@ const LoginInput = () => {
   };
 
   const onClickLoginButton = async () => {
-    await axios
+    await axiosInstance
       .post('http://localhost:8080/auth/login', userData)
       .then((response) => {
         console.log(response.data);
@@ -42,17 +43,17 @@ const LoginInput = () => {
         }
       })
       .then(() => {
-        navigate('/');
-        location.reload();
+        // navigate('/');
+        // location.reload();
       })
       .catch((err) => {
-        console.log(err);
+        console.error(err);
       });
 
-    return await axios
-      .get('http://localhost:8080/auth/testLogin')
+    await axios
+      .get('http://localhost:8080/auth/user-detail')
       .then((response) => {
-        console.log(response.data);
+        console.log(response);
       });
   };
 
