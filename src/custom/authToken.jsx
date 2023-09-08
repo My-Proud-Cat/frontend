@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const axiosInstance = axios.create({
-  baseURL: 'http://localhost:8080/',
+  baseURL: '',
   timeout: 1000,
 });
 
@@ -19,12 +19,11 @@ axiosInstance.interceptors.response.use((response) => {
 
 axiosInstance.interceptors.request.use(
   (request) => {
-    request.headers['Content-Type'] = 'application/json';
     request.headers['Authorization'] = `Bearer ${localStorage.getItem(
       'accessToken',
     )}`;
 
-    // console.log(request.headers);
+    console.log(request.headers);
 
     return request;
   },

@@ -7,6 +7,7 @@ import { titleState } from '@store/getPictureTitleData';
 import { contentState } from '@store/getPictureContentData';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useRef, useState } from 'react';
+import { axiosInstance } from 'custom/authToken';
 
 /* 텍스트 지우는 함수 */
 function clearText() {
@@ -63,14 +64,13 @@ function WriteInput({ comment }) {
   async function onClickPostButton(e) {
     e.preventDefault();
 
-    await axios
+    await axiosInstance
       .post('http://localhost:8080/picture', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       })
       .then(() => {
         navigate('/');
         location.reload();
-        console.log(imgPreview);
       })
       .catch((err) => {
         console.log(err);

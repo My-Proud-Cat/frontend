@@ -43,17 +43,17 @@ const LoginInput = () => {
         }
       })
       .then(() => {
-        // navigate('/');
-        // location.reload();
+        navigate('/');
+        location.reload();
       })
       .catch((err) => {
         console.error(err);
       });
 
-    await axios
+    await axiosInstance
       .get('http://localhost:8080/auth/user-detail')
       .then((response) => {
-        console.log(response);
+        console.log(response.data);
       });
   };
 
