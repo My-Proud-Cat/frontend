@@ -1,5 +1,6 @@
 import styles from './PostUD.module.css';
 import axios from 'axios';
+import { axiosInstance } from 'custom/authToken';
 import { useNavigate, useParams } from 'react-router-dom';
 
 const PostUD = () => {
@@ -10,7 +11,7 @@ const PostUD = () => {
     const ok = window.confirm('삭제 하시겠습니까?');
 
     if (ok) {
-      await axios
+      await axiosInstance
         .delete(`http://localhost:8080/picture/${id}`)
         .then(() => {
           navigate('/');
