@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 
 function Article({ item }) {
-  const { title, user, view, heartCnt, id } = item;
+  const { title, user, view, heartCnt, id, nickname } = item;
 
   const [imageUrl, setImageUrl] = useState('');
 
@@ -34,7 +34,7 @@ function Article({ item }) {
         </Link>
 
         <div className={styles.position}>
-          <p className={styles.nickname}>{user?.nickname}</p>
+          <p className={styles.nickname}>{nickname}</p>
 
           <div className={styles.numbers}>
             <p className={styles.view}>조회수 {view}</p>

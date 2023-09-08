@@ -35,7 +35,7 @@ function PictureDetail() {
       });
   }, []);
 
-  const { title, describe, img, user, view } = item.contents;
+  const { title, describe, img, user, view, nickname } = item.contents;
 
   if (item === 'hasError') {
     return <div>Error : {console.log(item.error)}</div>;
@@ -62,7 +62,7 @@ function PictureDetail() {
           <p className={styles.title}>{title}</p>
 
           <div className={styles.info}>
-            <p className={styles.nickname}>임시</p>
+            <p className={styles.nickname}>{nickname}</p>
             <p className={styles.date}>2023.05.20</p>
             <PostUD />
           </div>
