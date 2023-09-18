@@ -97,7 +97,7 @@ function WriteInput({ comment }) {
     if (commentField === '') {
       window.alert('내용을 입력해주세요');
     } else {
-      await axios
+      await axiosInstance
         .post(`http://localhost:8080/proudcat/${id}/comments`, {
           content: commentField,
         })
