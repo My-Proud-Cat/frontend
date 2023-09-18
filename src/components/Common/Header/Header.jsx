@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
 import styles from './Header.module.css';
 import styled from 'styled-components';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useRecoilState } from 'recoil';
 import { authState } from '@store/authUserLogin';
 import { useEffect } from 'react';
+import axios from 'axios';
 
 const LinkHover = styled(Link)`
   &:hover {
@@ -22,11 +23,21 @@ function Header() {
     }
   }, []);
 
-  const onClickLogoutButton = () => {};
+  const onClickLogoutButton = async () => {
+    axios.post('http://localhost:8080/auth/logout').then(() => {
+      localStorage.clear;
+    });
+  };
 
   return (
     <div className={styles.layout}>
-      <Link to="/" className={styles.logo}>
+      <Link
+        to="/"
+        className={styles.logo}
+        onClick={() => {
+          location.reload();
+        }}
+      >
         My Proud Cat
       </Link>
 
