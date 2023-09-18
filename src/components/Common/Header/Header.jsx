@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { useRecoilState } from 'recoil';
 import { authState } from '@store/authUserLogin';
 import { useEffect } from 'react';
-import axios from 'axios';
+import { axiosInstance } from 'custom/authToken';
 
 const LinkHover = styled(Link)`
   &:hover {
@@ -24,8 +24,9 @@ function Header() {
   }, []);
 
   const onClickLogoutButton = async () => {
-    axios.post('http://localhost:8080/auth/logout').then(() => {
-      localStorage.clear;
+    axiosInstance.get('http://localhost:8080/auth/logout').then((response) => {
+      console.log(response.data);
+      localStorage.clear();
     });
   };
 
@@ -50,9 +51,9 @@ function Header() {
 
         {token === true ? (
           <div className={styles.category}>
-            <LinkHover to="/login">닉네임</LinkHover>
+            <LinkHover to="/">닉네임</LinkHover>
             <LinkHover
-              to="/signup"
+              to="/"
               onClick={() => {
                 onClickLogoutButton();
               }}

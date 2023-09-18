@@ -8,6 +8,7 @@ import { useRecoilValueLoadable } from 'recoil';
 import { getPicture } from '@store/getPictureData';
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { axiosInstance } from 'custom/authToken';
 
 function PictureDetail() {
   const { id } = useParams();
@@ -45,12 +46,21 @@ function PictureDetail() {
     return <div>로딩중입니다</div>;
   }
 
-  const clickLike = () => {
-    if (likeState === '') {
-      setLikeState('click');
-    } else {
-      setLikeState('');
-    }
+  const clickLike = async () => {
+    axiosInstance
+      .get(`http://localhost:8080/proudcat/${id}/heart`)
+      .then((response) => {
+        console.log(response);
+
+        if (response.data === true) {
+          setLikeState('click');
+        } else {
+          setLikeState('');
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (

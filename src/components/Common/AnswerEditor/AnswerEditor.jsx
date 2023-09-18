@@ -9,7 +9,9 @@ import axios from 'axios';
 function AnswerEditor({ item }) {
   const { id } = useParams();
 
-  useRecoilState(getPictureComment(id));
+  const commentData = useRecoilState(getPictureComment(id));
+
+  console.log(commentData);
 
   const [update, setUpdate] = useState(false);
 
@@ -49,7 +51,6 @@ function AnswerEditor({ item }) {
       {update === true ? (
         <div className={styles.comment}>
           <div className={styles.info}>
-            {/* <p className={styles.name}>{user?.nickname}</p> */}
             <p className={styles.name}>닉넴</p>
 
             <div className={styles.position}>
@@ -63,8 +64,7 @@ function AnswerEditor({ item }) {
       ) : (
         <div className={styles.comment}>
           <div className={styles.info}>
-            {/* <p className={styles.name}>{user?.nickname}</p> */}
-            <p className={styles.name}>닉넴</p>
+            <p className={styles.name}>{commentData.nickname}</p>
 
             <div className={styles.position}>
               <DotButton item={item} onClick={clickDotButton} />
