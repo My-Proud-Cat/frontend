@@ -11,7 +11,7 @@ function AnswerEditor({ item }) {
 
   const commentData = useRecoilState(getPictureComment(id));
 
-  console.log(commentData);
+  // console.log(commentData[0].commentDetails);
 
   const [update, setUpdate] = useState(false);
 
@@ -55,7 +55,7 @@ function AnswerEditor({ item }) {
 
             <div className={styles.position}>
               <DotButton item={item} />
-              <p className={styles.date}>2023.05.27</p>
+              <p className={styles.date}>2023.9.25</p>
             </div>
           </div>
 
@@ -68,7 +68,7 @@ function AnswerEditor({ item }) {
 
             <div className={styles.position}>
               <DotButton item={item} onClick={clickDotButton} />
-              <p className={styles.date}>2023.05.27</p>
+              <p className={styles.date}>2023.9.25</p>
             </div>
           </div>
 
