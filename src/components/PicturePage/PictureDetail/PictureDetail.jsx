@@ -36,7 +36,8 @@ function PictureDetail() {
       });
   }, []);
 
-  const { title, describe, img, user, view, nickname } = item.contents;
+  const { title, describe, img, user, view, nickname, createdAt } =
+    item.contents;
 
   if (item === 'hasError') {
     return <div>Error : {console.log(item.error)}</div>;
@@ -73,7 +74,7 @@ function PictureDetail() {
 
           <div className={styles.info}>
             <p className={styles.nickname}>{nickname}</p>
-            <p className={styles.date}>2023.05.20</p>
+            <p className={styles.date}>{createdAt}</p>
             <PostUD />
           </div>
         </div>
