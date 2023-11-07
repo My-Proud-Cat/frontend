@@ -33,13 +33,7 @@ function Header() {
 
   return (
     <div className={styles.layout}>
-      <Link
-        to="/"
-        className={styles.logo}
-        onClick={() => {
-          location.reload();
-        }}
-      >
+      <Link to="/" className={styles.logo}>
         My Proud Cat
       </Link>
 
