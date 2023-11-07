@@ -23,9 +23,21 @@ const PostUD = () => {
     }
   };
 
+  const clickUpdate = async () => {
+    // await axiosInstance.put(`http://localhost:8080/picture/${id}`);
+  };
+
   return (
     <div className={styles.layout}>
-      <button className={styles.update}>수정</button>
+      <button
+        className={styles.update}
+        onClick={() => {
+          clickUpdate();
+        }}
+      >
+        수정
+      </button>
+
       <button
         className={styles.delete}
         onClick={() => {
