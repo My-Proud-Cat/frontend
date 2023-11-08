@@ -9,8 +9,6 @@ function AnswerEditor({ item }) {
 
   const commentData = useRecoilState(getPictureComment(id));
 
-  // console.log(commentData[0].commentDetails);
-
   const clickDotButton = async (e) => {
     const ok = window.confirm('삭제 하시겠습니까?');
 
@@ -30,10 +28,10 @@ function AnswerEditor({ item }) {
     <>
       <div className={styles.comment}>
         <div className={styles.info}>
-          <p className={styles.name}>{commentData.nickname}</p>
+          <p className={styles.name}>{item.commentWriter}</p>
 
           <div className={styles.position}>
-            <p className={styles.date}>2023.9.25</p>
+            <p className={styles.date}>{item.createdAt}</p>
             <button
               className={styles.delete}
               onClick={() => {
