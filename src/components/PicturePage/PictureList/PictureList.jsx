@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import { getPictureList } from '@store/getPictureData';
 import { useNavigate } from 'react-router-dom';
+import { axiosInstance } from 'custom/authToken';
 
 function PictureList() {
   const pictureData = useRecoilValue(getPictureList);
@@ -33,21 +34,25 @@ function PictureList() {
     setPosts(pictureData);
   }, [pictureData]);
 
-  const onClickSort = (e) => {
+  /* ----------------------------------- 정렬 ----------------------------------- */
+
+  const [targetName, setTargetName] = useState('date');
+
+  const onClickSort = async (e) => {
     if (e.target.name === 'date') {
-      setPosts(
-        [...pictureData].sort(function (a, b) {
-          return new Date(b.created_at) - new Date(a.created_at);
-        }),
-      );
+      setPosts(pictureData);
+      setTargetName('data');
     }
 
     if (e.target.name === 'like') {
-      setPosts(
-        [...pictureData].sort(function (a, b) {
-          return b.like - a.like;
-        }),
+      const response = await axiosInstance.get(
+        'http://localhost:8080/picture/list/paging?sort=hearts',
       );
+
+      console.log(response.data);
+      const sortPictureData = response.data;
+      setPosts(sortPictureData);
+      setTargetName('like');
     }
   };
 
@@ -75,7 +80,7 @@ function PictureList() {
 
         <div className={styles.post}>
           {currentPosts(posts).map((item, index) => {
-            return <Article key={index} item={item} />;
+            return <Article key={index} item={item} name={targetName} />;
           })}
         </div>
 
