@@ -2,18 +2,18 @@ import styles from './AnswerEditor.module.css';
 import { getPictureComment } from '@store/getPictureCommentData';
 import { useParams } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
-import axios from 'axios';
+import { axiosInstance } from 'custom/authToken';
 
 function AnswerEditor({ item }) {
   const { id } = useParams();
 
   const commentData = useRecoilState(getPictureComment(id));
 
-  const clickDotButton = async (e) => {
+  const clickDeleteButton = async (e) => {
     const ok = window.confirm('삭제 하시겠습니까?');
 
     if (ok) {
-      await axios
+      await axiosInstance
         .delete(`http://localhost:8080/proudcat/${id}/comment/${item.id}`)
         .then(() => {
           location.reload();
@@ -35,7 +35,7 @@ function AnswerEditor({ item }) {
             <button
               className={styles.delete}
               onClick={() => {
-                clickDotButton();
+                clickDeleteButton();
               }}
             >
               삭제
