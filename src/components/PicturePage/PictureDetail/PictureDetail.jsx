@@ -3,7 +3,8 @@ import Banner from 'components/Common/Banner/Banner';
 import Comment from 'components/Common/Comment/Comment';
 import PostUD from 'components/Common/PostUD/PostUD';
 import axios from 'axios';
-import { ReactComponent as Heart } from 'assets/heart.svg';
+import { ReactComponent as ThumbsBefore } from 'assets/thumbsBefore.svg';
+import { ReactComponent as ThumbsAfter } from 'assets/thumbsAfter.svg';
 import { useRecoilValueLoadable } from 'recoil';
 import { getPicture } from '@store/getPictureData';
 import { useParams } from 'react-router-dom';
@@ -88,8 +89,14 @@ function PictureDetail() {
             className={likeState === '' ? styles.like_no : styles.like}
             onClick={() => clickLike()}
           >
-            <p>좋아요</p>
-            <Heart />
+            <ThumbsBefore
+              className={likeState === '' ? styles.visible : styles.invisible}
+            >
+              추천
+            </ThumbsBefore>
+            <ThumbsAfter
+              className={likeState === '' ? styles.invisible : styles.visible}
+            />
           </button>
         </div>
 
