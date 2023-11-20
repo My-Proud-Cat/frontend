@@ -80,7 +80,14 @@ function PictureList() {
 
         <div className={styles.post}>
           {currentPosts(posts).map((item, index) => {
-            return <Article key={index} item={item} name={targetName} />;
+            return (
+              <Article
+                key={index}
+                item={item}
+                name={targetName}
+                page={currentPage}
+              />
+            );
           })}
         </div>
 

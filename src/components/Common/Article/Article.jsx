@@ -3,7 +3,7 @@ import styles from './Article.module.css';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-function Article({ item, name }) {
+function Article({ item, name, page }) {
   const { title, view, heartCnt, id, nickname } = item;
 
   const [imageUrl, setImageUrl] = useState('');
@@ -39,6 +39,22 @@ function Article({ item, name }) {
         console.error(error);
       });
   }, [name]);
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8080/proudcat/api/image-file-path/${id}`, {
+        responseType: 'arraybuffer',
+      })
+      .then((response) => {
+        const url = URL.createObjectURL(
+          new Blob([response.data], { type: 'image/png' }),
+        );
+        setImageUrl(url);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, [page]);
 
   return (
     <div className={styles.layout}>
