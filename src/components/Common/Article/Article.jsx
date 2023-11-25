@@ -1,12 +1,16 @@
 import { Link } from 'react-router-dom';
 import styles from './Article.module.css';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 function Article({ item, name, page }) {
   const { title, view, heartCnt, id, nickname } = item;
 
   const [imageUrl, setImageUrl] = useState('');
+
+  const imageRef = useRef(null);
+
+  const onClickImage = () => imageRef.current.click();
 
   useEffect(() => {
     axios
@@ -59,9 +63,15 @@ function Article({ item, name, page }) {
   return (
     <div className={styles.layout}>
       <div>
-        <img src={imageUrl} alt="" className={styles.img} />
+        <img
+          src={imageUrl}
+          alt="인생샷"
+          className={styles.img}
+          onClick={() => onClickImage()}
+          role="none"
+        />
 
-        <Link to={`/${id}`} className={styles.title}>
+        <Link to={`/${id}`} className={styles.title} ref={imageRef}>
           {title}
         </Link>
 
