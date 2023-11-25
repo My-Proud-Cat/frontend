@@ -10,9 +10,24 @@
   margin-top: 55px;
 }
 
+.formPosition {
+  display: flex;
+}
+
 .label {
   font-size: 14px;
   margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.form {
+  color: red;
+  font-size: 13px;
+  margin-left: 10px;
+}
+
+.form_none {
+  display: none;
 }
 
 .input {

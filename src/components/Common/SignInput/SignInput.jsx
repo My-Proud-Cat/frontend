@@ -7,6 +7,7 @@ import {
   signPasswordState,
   signNicknameState,
 } from '@store/authUserSignUp';
+import { useState } from 'react';
 
 const SignInput = () => {
   const navigate = useNavigate();
@@ -19,6 +20,10 @@ const SignInput = () => {
   const [password, setPassword] = useRecoilState(signPasswordState);
   const [nickname, setNickname] = useRecoilState(signNicknameState);
 
+  const [emailError, setEmailError] = useState(false);
+  const [paswwordError, setPasswordError] = useState(false);
+  const [nicknameError, setNicknameError] = useState(false);
+
   const userData = {
     email: emailField,
     password: passwordField,
@@ -27,34 +32,63 @@ const SignInput = () => {
 
   const onChangeEmail = (e) => {
     setEmail(e.target.value);
+
+    if (email.length < 2 || email.length > 10) {
+      setEmailError(true);
+    } else setEmailError(false);
   };
 
   const onChangePassword = (e) => {
     setPassword(e.target.value);
+
+    if (password.length < 8 || password.length > 14) {
+      setPasswordError(true);
+    } else setPasswordError(false);
   };
 
   const onChangeNickname = (e) => {
     setNickname(e.target.value);
+
+    if (nickname.length < 2 || nickname.length > 8) {
+      setNicknameError(true);
+    } else setNicknameError(false);
   };
 
   const onClickSignUpButton = async () => {
-    await axios
-      .post('http://localhost:8080/auth/sign-up', userData)
-      .then(() => {
-        navigate('/login');
-        location.reload();
-        console.log('회원가입 성공');
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    if (email.length === 0 || password.length === 0 || nickname.length === 0) {
+      alert('빈 칸을 모두 채워주세요');
+    } else if (
+      emailError === true ||
+      paswwordError === true ||
+      nicknameError === true
+    ) {
+      alert('양식에 맞게 입력해주세요');
+    } else {
+      await axios
+        .post('http://localhost:8080/auth/sign-up', userData)
+        .then(() => {
+          navigate('/login');
+          location.reload();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   };
 
   return (
     <div className={styles.layout}>
       <div className={styles.position}>
         <div>
-          <p className={styles.label}>이메일</p>
+          <div className={styles.formPosition}>
+            <p className={styles.label}>이메일</p>
+
+            {emailError === true ? (
+              <p className={styles.form}>영문 2~8자 이내로 입력해주세요</p>
+            ) : (
+              <p className={styles.form_none}></p>
+            )}
+          </div>
 
           <input
             className={styles.input}
@@ -68,7 +102,15 @@ const SignInput = () => {
         </div>
 
         <div>
-          <p className={styles.label}>비밀번호</p>
+          <div className={styles.formPosition}>
+            <p className={styles.label}>비밀번호</p>
+
+            {paswwordError === true ? (
+              <p className={styles.form}>8~14자 이내로 입력해주세요</p>
+            ) : (
+              <p className={styles.form_none}></p>
+            )}
+          </div>
 
           <input
             className={styles.input}
@@ -82,7 +124,18 @@ const SignInput = () => {
         </div>
 
         <div className="">
-          <p className={styles.label}>닉네임</p>
+          <div className={styles.formPosition}>
+            <p className={styles.label}>닉네임</p>
+
+            {nicknameError === true ? (
+              <p className={styles.form}>
+                특수문자 제외 2~8자 이내로 입력해주세요
+              </p>
+            ) : (
+              <p className={styles.form_none}></p>
+            )}
+          </div>
+
           <input
             className={styles.input}
             id="nickname"
