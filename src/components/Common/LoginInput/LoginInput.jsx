@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { emailState, passwordState } from '@store/authUserLogin';
 import { axiosInstance } from 'custom/authToken';
+import { message } from 'antd';
 
 const LoginInput = () => {
   const navigate = useNavigate();
@@ -31,7 +32,7 @@ const LoginInput = () => {
     await axiosInstance
       .post('http://localhost:8080/auth/login', userData)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.status);
 
         if (response.data.accessToken && response.data.refreshToken) {
           localStorage.setItem('accessToken', response.data.accessToken);
@@ -41,6 +42,14 @@ const LoginInput = () => {
             'Authorization'
           ] = `Bearer ${response.data.accessToken}`;
         }
+
+        if (response.status === 200) {
+          axiosInstance
+            .get('http://localhost:8080/auth/user-detail')
+            .then((response) => {
+              console.log(response.data);
+            });
+        }
       })
       .then(() => {
         navigate('/');
@@ -48,12 +57,10 @@ const LoginInput = () => {
       })
       .catch((err) => {
         console.error(err);
-      });
 
-    await axiosInstance
-      .get('http://localhost:8080/auth/user-detail')
-      .then((response) => {
-        console.log(response.data);
+        if (err.response.status === 400) {
+          alert(err.response.data.message);
+        }
       });
   };
 
