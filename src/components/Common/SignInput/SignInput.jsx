@@ -76,6 +76,12 @@ const SignInput = () => {
     }
   };
 
+  const onSignUpKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      onClickSignUpButton();
+    }
+  };
+
   return (
     <div className={styles.layout}>
       <div className={styles.position}>
@@ -98,6 +104,7 @@ const SignInput = () => {
             onChange={() => {
               onChangeEmail(event);
             }}
+            onKeyDown={() => onSignUpKeyPress(event)}
           />
         </div>
 
@@ -120,6 +127,7 @@ const SignInput = () => {
             onChange={() => {
               onChangePassword(event);
             }}
+            onKeyDown={() => onSignUpKeyPress(event)}
           />
         </div>
 
@@ -144,6 +152,7 @@ const SignInput = () => {
             onChange={() => {
               onChangeNickname(event);
             }}
+            onKeyDown={() => onSignUpKeyPress(event)}
           />
         </div>
 
