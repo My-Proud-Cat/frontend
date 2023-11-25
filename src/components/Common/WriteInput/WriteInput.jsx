@@ -6,7 +6,7 @@ import { useRecoilState, useRecoilValue } from 'recoil';
 import { titleState } from '@store/getPictureTitleData';
 import { contentState } from '@store/getPictureContentData';
 import { useParams, useNavigate } from 'react-router-dom';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { axiosInstance } from 'custom/authToken';
 
 /* 텍스트 지우는 함수 */
@@ -93,6 +93,15 @@ function WriteInput({ comment }) {
 
   const [commentField, setCommentField] = useState(null);
 
+  const storage = localStorage.getItem('refreshToken');
+  const [user, setUser] = useState(false);
+
+  useEffect(() => {
+    if (storage) {
+      setUser(true);
+    }
+  }, []);
+
   const onClickCommentButton = async () => {
     if (commentField === '') {
       window.alert('내용을 입력해주세요');
@@ -119,15 +128,36 @@ function WriteInput({ comment }) {
     <>
       {comment ? (
         <div>
-          <textarea
-            id="comment"
-            className={styles.form}
-            placeholder="댓글을 입력해주세요"
-            onChange={onChangeComment}
-            value={commentField || ''}
-          />
+          {user === true ? (
+            <div className="">
+              <textarea
+                id="comment"
+                className={styles.form}
+                placeholder="댓글을 입력해주세요"
+                onChange={onChangeComment}
+                value={commentField || ''}
+              />
 
-          <SubmitButton comment="true" onClick={onClickCommentButton} />
+              <SubmitButton comment="true" onClick={onClickCommentButton} />
+            </div>
+          ) : (
+            <div className="">
+              <textarea
+                id="comment"
+                className={styles.form}
+                placeholder="로그인 후 이용 가능합니다"
+                onChange={onChangeComment}
+                value={commentField || ''}
+                disabled
+              />
+
+              <SubmitButton
+                comment="true"
+                onClick={onClickCommentButton}
+                disabled
+              />
+            </div>
+          )}
         </div>
       ) : (
         <div>
