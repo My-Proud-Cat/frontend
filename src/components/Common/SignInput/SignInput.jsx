@@ -67,8 +67,12 @@ const SignInput = () => {
       await axios
         .post('http://localhost:8080/auth/sign-up', userData)
         .then(() => {
-          navigate('/login');
-          location.reload();
+          alert('회원가입이 완료되었습니다!');
+
+          if (alert) {
+            navigate('/login');
+            location.reload();
+          }
         })
         .catch((err) => {
           console.log(err);
