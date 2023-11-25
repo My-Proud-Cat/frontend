@@ -3,7 +3,7 @@ import styles from './Header.module.css';
 import styled from 'styled-components';
 import { useRecoilState } from 'recoil';
 import { authState } from '@store/authUserLogin';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { axiosInstance } from 'custom/authToken';
 
 const LinkHover = styled(Link)`
@@ -14,12 +14,19 @@ const LinkHover = styled(Link)`
 
 function Header() {
   const [token, setToken] = useRecoilState(authState);
+  const [nickname, setNickname] = useState('');
 
   const storage = localStorage.getItem('refreshToken');
 
   useEffect(() => {
     if (storage) {
       setToken(true);
+
+      axiosInstance
+        .get('http://localhost:8080/auth/user-detail')
+        .then((response) => {
+          setNickname(response.data);
+        });
     }
   }, []);
 
@@ -46,7 +53,7 @@ function Header() {
 
         {token === true ? (
           <div className={styles.category}>
-            <LinkHover to="/">닉네임</LinkHover>
+            <LinkHover to="/">{nickname}</LinkHover>
             <LinkHover
               to="/"
               onClick={() => {
