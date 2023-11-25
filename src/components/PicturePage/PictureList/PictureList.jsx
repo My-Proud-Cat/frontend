@@ -29,10 +29,20 @@ function PictureList() {
 
   const navigate = useNavigate();
 
+  const storage = localStorage.getItem('refreshToken');
+
   useEffect(() => {
     if (!pictureData) return;
     setPosts(pictureData);
   }, [pictureData]);
+
+  const onCLickWriteButton = () => {
+    if (storage) {
+      navigate('/write');
+    } else {
+      alert('로그인 후 이용 가능합니다');
+    }
+  };
 
   /* ----------------------------------- 정렬 ----------------------------------- */
 
@@ -66,7 +76,7 @@ function PictureList() {
             <button
               className={styles.writeButton}
               onClick={() => {
-                navigate('/write');
+                onCLickWriteButton();
               }}
             >
               글쓰기
