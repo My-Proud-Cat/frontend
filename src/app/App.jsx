@@ -7,6 +7,7 @@ import SignUp from 'components/SignUpPage/SignUp';
 import PicturePage from 'pages/PicturePage';
 import PictureWirte from 'components/PicturePage/PictureWrite/PictureWirte';
 import PictureDetail from 'components/PicturePage/PictureDetail/PictureDetail';
+import UpdatePage from 'components/Common/UpdatePage/UpdatePage';
 
 function App() {
   return (
@@ -21,6 +22,8 @@ function App() {
           <Route path="/" element={<PicturePage />} />
           <Route path="/write" element={<PictureWirte />} />
           <Route path="/:id" element={<PictureDetail />} />
+
+          <Route path="/update" element={<UpdatePage />} />
         </Routes>
       </Suspense>
     </div>
