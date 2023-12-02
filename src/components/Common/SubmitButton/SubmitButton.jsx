@@ -1,6 +1,6 @@
 import styles from './SubmitButton.module.css';
 
-function SubmitButton({ comment, ...restProps }) {
+function SubmitButton({ category, comment, ...restProps }) {
   return (
     <>
       {comment ? (
@@ -10,13 +10,13 @@ function SubmitButton({ comment, ...restProps }) {
             type="submit"
             {...restProps}
           >
-            등록
+            {category}
           </button>
         </div>
       ) : (
         <div className={styles.layout}>
           <button className={styles.submitButton} type="submit" {...restProps}>
-            등록
+            {category}
           </button>
         </div>
       )}
