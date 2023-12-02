@@ -1,24 +1,29 @@
 import styles from './PictureDetail.module.css';
 import Banner from 'components/Common/Banner/Banner';
 import Comment from 'components/Common/Comment/Comment';
-import PostUD from 'components/Common/PostUD/PostUD';
 import SubmitButton from 'components/Common/SubmitButton/SubmitButton';
 import UpdatePage from 'components/Common/UpdatePage/UpdatePage';
-import axios from 'axios';
 import { ReactComponent as ThumbsBefore } from 'assets/thumbsBefore.svg';
 import { ReactComponent as ThumbsAfter } from 'assets/thumbsAfter.svg';
 import { useRecoilValueLoadable } from 'recoil';
 import { getPicture } from '@store/getPictureData';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { axiosInstance } from 'custom/authToken';
+import useInput from 'custom/useInput';
 
 function PictureDetail() {
+  const {
+    onSubmitUpdateButton,
+    updateMode,
+    onCliclCancelButton,
+    onClickUpdateButton,
+    onClickDeleteButton,
+  } = useInput();
+
   const { id } = useParams();
-  const navigate = useNavigate();
 
   const [likeState, setLikeState] = useState('');
-  const [updateMode, setUpdateMode] = useState(false);
 
   const pictureData = useRecoilValueLoadable(getPicture(id));
   let item = [pictureData].find(() => id);
@@ -26,7 +31,7 @@ function PictureDetail() {
   const [imageUrl, setImageUrl] = useState('');
 
   useEffect(() => {
-    axios
+    axiosInstance
       .get(`http://localhost:8080/proudcat/api/image-file-path/${id}`, {
         responseType: 'arraybuffer',
       })
@@ -41,8 +46,7 @@ function PictureDetail() {
       });
   }, []);
 
-  const { title, describe, img, user, view, nickname, createdAt } =
-    item.contents;
+  const { title, describe, nickname, createdAt } = item.contents;
 
   if (item === 'hasError') {
     return <div>Error : {console.log(item.error)}</div>;
@@ -67,42 +71,6 @@ function PictureDetail() {
       .catch((err) => {
         console.log(err);
       });
-  };
-
-  /* ---------------------------------- 수정/삭제 --------------------------------- */
-
-  const onClickUpdateButton = async () => {
-    setUpdateMode(true);
-  };
-
-  const onCliclCancelButton = () => {
-    setUpdateMode(false);
-  };
-
-  const onSubmitUpdateButton = async () => {
-    await axiosInstance
-      .put(`http://localhost:8080/picture/${id}`, {
-        headers: { 'Content-Type': 'multipart/form-data' },
-      })
-      .then(() => {
-        console.log('성공');
-      });
-  };
-
-  const onClickDeleteButton = async () => {
-    const ok = window.confirm('삭제 하시겠습니까?');
-
-    if (ok) {
-      await axiosInstance
-        .delete(`http://localhost:8080/picture/${id}`)
-        .then(() => {
-          navigate('/');
-          location.reload();
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
   };
 
   return (
@@ -130,7 +98,6 @@ function PictureDetail() {
             <div className={styles.info}>
               <p className={styles.nickname}>{nickname}</p>
               <p className={styles.date}>{createdAt}</p>
-              {/* <PostUD /> */}
 
               <div className={styles.layout2}>
                 <div>
