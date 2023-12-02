@@ -25,7 +25,7 @@ function Header() {
       axiosInstance
         .get('http://localhost:8080/auth/user-detail')
         .then((response) => {
-          setNickname(response.data);
+          setNickname(response.data.nickname);
         });
     }
   }, []);
