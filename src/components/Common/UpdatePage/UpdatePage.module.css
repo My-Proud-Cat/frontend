@@ -52,7 +52,6 @@
 }
 
 .fileUpload {
-  /* position: relative; */
   margin-top: 30px;
   margin-left: 30px;
   border: 5px dotted var(--secondary);
@@ -60,13 +59,6 @@
   display: flex;
   border-radius: 5px;
   overflow: hidden;
-}
-
-.fileUpload img {
-  position: absolute;
-  width: 336px;
-  height: 338px;
-  object-fit: cover;
 }
 
 .fileUpload button {
@@ -80,15 +72,5 @@
   background: transparent;
   border: none;
   z-index: 100;
-}
-
-.fileUpload input[type='file'] {
-  position: absolute;
-  width: 1;
-  height: 1;
-  padding: 0;
-  margin: -1;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
+  cursor: default;
 }
