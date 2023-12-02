@@ -22,8 +22,6 @@ function App() {
           <Route path="/" element={<PicturePage />} />
           <Route path="/write" element={<PictureWirte />} />
           <Route path="/:id" element={<PictureDetail />} />
-
-          <Route path="/update" element={<UpdatePage />} />
         </Routes>
       </Suspense>
     </div>
