@@ -14,11 +14,11 @@ import useInput from 'custom/useInput';
 
 function PictureDetail() {
   const {
-    onSubmitUpdateButton,
     updateMode,
     onCliclCancelButton,
     onClickUpdateButton,
     onClickDeleteButton,
+    onSubmitUpdateButton,
   } = useInput();
 
   const { id } = useParams();
