@@ -95,3 +95,32 @@
 .visible {
   display: block;
 }
+
+/* 수정/삭제 */
+
+.layout2 {
+  display: flex;
+  flex-flow: row nowrap;
+  font-size: 14px;
+}
+
+.update {
+  background-color: transparent;
+  border: none;
+}
+
+.delete {
+  background-color: transparent;
+  border: none;
+}
+
+.update:hover,
+.delete:hover {
+  color: var(--primary);
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
