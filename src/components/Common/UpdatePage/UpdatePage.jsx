@@ -5,7 +5,7 @@ const UpdatePage = () => {
   const {
     onClickFileInput,
     onChangeFile,
-    onClickPostButton,
+    onSubmitUpdateButton,
     onChangeTitle,
     onChangeContent,
     title,
@@ -18,7 +18,7 @@ const UpdatePage = () => {
     <div className={styles.layout}>
       <p>글 작성</p>
 
-      <form onSubmit={onClickPostButton} encType="multipart/form-data">
+      <form encType="multipart/form-data">
         <div className={styles.layout2}>
           <div className={styles.input}>
             <input
