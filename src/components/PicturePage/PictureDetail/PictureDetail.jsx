@@ -24,6 +24,7 @@ function PictureDetail() {
   const { id } = useParams();
 
   const [likeState, setLikeState] = useState('');
+  const storage = localStorage.getItem('refreshToken');
 
   const pictureData = useRecoilValueLoadable(getPicture(id));
   let item = [pictureData].find(() => id);
@@ -57,20 +58,22 @@ function PictureDetail() {
   }
 
   const clickLike = async () => {
-    axiosInstance
-      .get(`http://localhost:8080/proudcat/${id}/heart`)
-      .then((response) => {
-        console.log(response);
-
-        if (response.data === true) {
-          setLikeState('click');
-        } else {
-          setLikeState('');
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    if (storage) {
+      axiosInstance
+        .get(`http://localhost:8080/proudcat/${id}/heart`)
+        .then((response) => {
+          if (response.data === true) {
+            setLikeState('click');
+          } else {
+            setLikeState('');
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      alert('로그인 후 이용 가능합니다');
+    }
   };
 
   return (
