@@ -2,17 +2,8 @@ import styles from './UpdatePage.module.css';
 import useInput from 'custom/useInput';
 
 const UpdatePage = () => {
-  const {
-    onClickFileInput,
-    onChangeFile,
-    onSubmitUpdateButton,
-    onChangeTitle,
-    onChangeContent,
-    title,
-    content,
-    imgPreview,
-    fileInputRef,
-  } = useInput();
+  const { onClickFileInput, onChangeTitle, onChangeContent, title, content } =
+    useInput();
 
   return (
     <div className={styles.layout}>
@@ -38,17 +29,9 @@ const UpdatePage = () => {
           </div>
 
           <div className={styles.fileUpload}>
-            <img src={imgPreview} alt="미리보기" />
-            <button onClick={onClickFileInput} type="button">
-              사진 추가하기
+            <button onClick={onClickFileInput} type="button" disabled>
+              사진은 변경할 수 없어요
             </button>
-            <input
-              id="file"
-              type="file"
-              accept="image/jpg, image/jpeg, image/png"
-              ref={fileInputRef}
-              onChange={onChangeFile}
-            />
           </div>
         </div>
       </form>
