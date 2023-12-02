@@ -138,7 +138,11 @@ function WriteInput({ comment }) {
                 value={commentField || ''}
               />
 
-              <SubmitButton comment="true" onClick={onClickCommentButton} />
+              <SubmitButton
+                category="등록"
+                comment="true"
+                onClick={onClickCommentButton}
+              />
             </div>
           ) : (
             <div className="">
@@ -152,6 +156,7 @@ function WriteInput({ comment }) {
               />
 
               <SubmitButton
+                category="등록"
                 comment="true"
                 onClick={onClickCommentButton}
                 disabled
@@ -196,7 +201,7 @@ function WriteInput({ comment }) {
                 />
               </div>
             </div>
-            <SubmitButton />
+            <SubmitButton category="등록" />
           </form>
         </div>
       )}
