@@ -57,7 +57,7 @@ const useInput = () => {
 
   formData.append('request', blob);
 
-  async function onClickPostButton(e) {
+  const onClickPostButton = async (e) => {
     e.preventDefault();
 
     await axiosInstance
@@ -75,7 +75,7 @@ const useInput = () => {
     for (let key of formData.entries()) {
       console.log(key);
     }
-  }
+  };
 
   const onChangeTitle = (e) => {
     setTitle(e.target.value);
@@ -83,6 +83,48 @@ const useInput = () => {
 
   const onChangeContent = (e) => {
     setContent(e.target.value);
+  };
+
+  /* ---------------------------------- 수정/삭제 --------------------------------- */
+
+  const [updateMode, setUpdateMode] = useState(false);
+
+  const onClickUpdateButton = async () => {
+    setUpdateMode(true);
+  };
+
+  const onCliclCancelButton = () => {
+    setUpdateMode(false);
+  };
+
+  const onSubmitUpdateButton = async () => {
+    console.log('클릭');
+    await axiosInstance
+      .put(`http://localhost:8080/picture/${id}`, formData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+      })
+      .then(() => {
+        console.log('업데이트 성공');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const onClickDeleteButton = async () => {
+    const ok = window.confirm('삭제 하시겠습니까?');
+
+    if (ok) {
+      await axiosInstance
+        .delete(`http://localhost:8080/picture/${id}`)
+        .then(() => {
+          navigate('/');
+          location.reload();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   };
 
   return {
@@ -97,6 +139,11 @@ const useInput = () => {
     content,
     imgPreview,
     fileInputRef,
+    updateMode,
+    onSubmitUpdateButton,
+    onCliclCancelButton,
+    onClickUpdateButton,
+    onClickDeleteButton,
   };
 };
 
