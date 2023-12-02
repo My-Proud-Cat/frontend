@@ -1,13 +1,15 @@
 import styles from './PostUD.module.css';
-import axios from 'axios';
 import { axiosInstance } from 'custom/authToken';
+import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 const PostUD = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const clickDelete = async () => {
+  const [updateMode, setUpdateMode] = useState(false);
+
+  const onClickDeleteButton = async () => {
     const ok = window.confirm('삭제 하시겠습니까?');
 
     if (ok) {
@@ -23,30 +25,34 @@ const PostUD = () => {
     }
   };
 
-  const clickUpdate = async () => {
-    // await axiosInstance.put(`http://localhost:8080/picture/${id}`);
+  const onClickUpdateButton = async () => {
+    navigate('/update', { replace: true });
   };
 
   return (
-    <div className={styles.layout}>
-      <button
-        className={styles.update}
-        onClick={() => {
-          clickUpdate();
-        }}
-      >
-        수정
-      </button>
+    <>
+      <div className={styles.layout2}>
+        <div>
+          <button
+            className={styles.update}
+            onClick={() => {
+              onClickUpdateButton();
+            }}
+          >
+            수정
+          </button>
 
-      <button
-        className={styles.delete}
-        onClick={() => {
-          clickDelete();
-        }}
-      >
-        삭제
-      </button>
-    </div>
+          <button
+            className={styles.delete}
+            onClick={() => {
+              onClickDeleteButton();
+            }}
+          >
+            삭제
+          </button>
+        </div>
+      </div>
+    </>
   );
 };
 
