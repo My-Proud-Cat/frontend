@@ -100,11 +100,9 @@ const useInput = () => {
   const onSubmitUpdateButton = async () => {
     console.log('클릭');
     await axiosInstance
-      .put(`http://localhost:8080/picture/${id}`, formData, {
-        headers: { 'Content-Type': 'multipart/form-data' },
-      })
+      .put(`http://localhost:8080/picture/${id}`, postData)
       .then(() => {
-        console.log('업데이트 성공');
+        location.reload();
       })
       .catch((err) => {
         console.log(err);
