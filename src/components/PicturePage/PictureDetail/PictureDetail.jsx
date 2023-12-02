@@ -24,7 +24,9 @@ function PictureDetail() {
   const { id } = useParams();
 
   const [likeState, setLikeState] = useState('');
-  const storage = localStorage.getItem('refreshToken');
+  const [auth, setAuth] = useState(false);
+
+  const storage = localStorage.getItem('accessToken');
 
   const pictureData = useRecoilValueLoadable(getPicture(id));
   let item = [pictureData].find(() => id);
@@ -45,6 +47,22 @@ function PictureDetail() {
       .catch((error) => {
         console.error(error);
       });
+  }, []);
+
+  useEffect(() => {
+    if (storage) {
+      setAuth(true);
+      console.log('true > ' + auth);
+
+      axiosInstance
+        .get('http://localhost:8080/auth/user-detail')
+        .then((response) => {
+          console.log(response.data.email);
+        });
+    } else {
+      console.log('false > ' + auth);
+      setAuth(false);
+    }
   }, []);
 
   const { title, describe, nickname, createdAt } = item.contents;
@@ -103,25 +121,29 @@ function PictureDetail() {
               <p className={styles.date}>{createdAt}</p>
 
               <div className={styles.layout2}>
-                <div>
-                  <button
-                    className={styles.update}
-                    onClick={() => {
-                      onClickUpdateButton();
-                    }}
-                  >
-                    수정
-                  </button>
+                {auth === true ? (
+                  <div className={styles.dot}>
+                    <button
+                      className={styles.update}
+                      onClick={() => {
+                        onClickUpdateButton();
+                      }}
+                    >
+                      수정
+                    </button>
 
-                  <button
-                    className={styles.delete}
-                    onClick={() => {
-                      onClickDeleteButton();
-                    }}
-                  >
-                    삭제
-                  </button>
-                </div>
+                    <button
+                      className={styles.delete}
+                      onClick={() => {
+                        onClickDeleteButton();
+                      }}
+                    >
+                      삭제
+                    </button>
+                  </div>
+                ) : (
+                  <></>
+                )}
               </div>
             </div>
           </div>
