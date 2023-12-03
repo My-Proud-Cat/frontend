@@ -23,8 +23,6 @@ axiosInstance.interceptors.request.use(
       'accessToken',
     )}`;
 
-    console.log(request.headers);
-
     return request;
   },
   (error) => {
