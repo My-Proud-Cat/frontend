@@ -52,7 +52,6 @@ function PictureDetail() {
   useEffect(() => {
     if (storage) {
       setAuth(true);
-      console.log('true > ' + auth);
 
       axiosInstance
         .get('http://localhost:8080/auth/user-detail')
@@ -60,7 +59,6 @@ function PictureDetail() {
           console.log(response.data.email);
         });
     } else {
-      console.log('false > ' + auth);
       setAuth(false);
     }
   }, []);
