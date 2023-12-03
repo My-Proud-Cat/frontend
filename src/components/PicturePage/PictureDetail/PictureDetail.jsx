@@ -31,6 +31,8 @@ function PictureDetail() {
   const pictureData = useRecoilValueLoadable(getPicture(id));
   let item = [pictureData].find(() => id);
 
+  const { title, describe, nickname, createdAt, email } = item.contents;
+
   const [imageUrl, setImageUrl] = useState('');
 
   useEffect(() => {
@@ -51,19 +53,17 @@ function PictureDetail() {
 
   useEffect(() => {
     if (storage) {
-      setAuth(true);
-
       axiosInstance
         .get('http://localhost:8080/auth/user-detail')
         .then((response) => {
-          console.log(response.data.email);
+          if (response.data.email === email) {
+            setAuth(true);
+          }
         });
     } else {
       setAuth(false);
     }
   }, []);
-
-  const { title, describe, nickname, createdAt } = item.contents;
 
   if (item === 'hasError') {
     return <div>Error : {console.log(item.error)}</div>;
