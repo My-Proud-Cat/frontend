@@ -17,7 +17,6 @@
 .position {
   display: flex;
   align-items: center;
-  gap: 25px;
 }
 
 .delete {
@@ -28,6 +27,12 @@
 
 .delete:hover {
   color: var(--primary);
+}
+
+.delete::before {
+  content: '•';
+  padding: 0 11px 0 4px;
+  color: var(--gray-500);
 }
 
 .date {
