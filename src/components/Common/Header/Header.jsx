@@ -32,7 +32,6 @@ function Header() {
 
   const onClickLogoutButton = async () => {
     axiosInstance.get('http://localhost:8080/auth/logout').then((response) => {
-      console.log(response.data);
       localStorage.clear();
       location.reload();
     });

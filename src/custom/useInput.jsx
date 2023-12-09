@@ -98,7 +98,6 @@ const useInput = () => {
   };
 
   const onSubmitUpdateButton = async () => {
-    console.log('클릭');
     await axiosInstance
       .put(`http://localhost:8080/picture/${id}`, postData)
       .then(() => {

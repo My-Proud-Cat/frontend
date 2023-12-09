@@ -59,7 +59,6 @@ function PictureList() {
         'http://localhost:8080/picture/list/paging?sort=hearts',
       );
 
-      console.log(response.data);
       const sortPictureData = response.data;
       setPosts(sortPictureData);
       setTargetName('like');

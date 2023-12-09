@@ -32,8 +32,6 @@ const LoginInput = () => {
     await axiosInstance
       .post('http://localhost:8080/auth/login', userData)
       .then((response) => {
-        // console.log(response.status);
-
         if (response.data.accessToken && response.data.refreshToken) {
           localStorage.setItem('accessToken', response.data.accessToken);
           localStorage.setItem('refreshToken', response.data.refreshToken);
@@ -46,9 +44,7 @@ const LoginInput = () => {
         if (response.status === 200) {
           axiosInstance
             .get('http://localhost:8080/auth/user-detail')
-            .then((response) => {
-              console.log(response.data);
-            });
+            .then((response) => {});
         }
       })
       .then(() => {
