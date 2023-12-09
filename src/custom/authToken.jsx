@@ -2,7 +2,6 @@ import axios from 'axios';
 
 export const axiosInstance = axios.create({
   baseURL: '',
-  timeout: 1000,
 });
 
 const postRefreshToken = async () => {
@@ -13,9 +12,53 @@ const postRefreshToken = async () => {
   return response;
 };
 
-axiosInstance.interceptors.response.use((response) => {
-  return response;
-});
+axiosInstance.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  async (error) => {
+    const {
+      config,
+      response: { status },
+    } = error;
+
+    const originalRequest = config;
+
+    localStorage.clear();
+    location.reload();
+
+    if (status === 401) {
+      const accessToken = localStorage.getItem('accessToken');
+      const refreshToken = localStorage.getItem('refreshToken');
+
+      console.log('401 에러입니다');
+
+      /* try {
+        const { data } = await axios.post(
+          'http://localhost:8080/auth/reissue',
+          {
+            accessToken: localStorage.getItem('accessToken'),
+            refreshToken: localStorage.getItem('refreshToken'),
+          },
+        );
+
+        const newAccessToken = data.data.accessToken;
+        const newRefreshToken = data.data.refreshToken;
+
+        originalRequest.headers['Authorization'] = 'Bearer' + newAccessToken;
+
+        localStorage.setItem('accessToken', newAccessToken);
+        localStorage.setItem('refreshToken', newRefreshToken);
+
+        return await axios(originalRequest);
+      } catch (err) {
+        new Error(err);
+      } */
+    }
+
+    return Promise.reject(error);
+  },
+);
 
 axiosInstance.interceptors.request.use(
   (request) => {
@@ -26,6 +69,7 @@ axiosInstance.interceptors.request.use(
     return request;
   },
   (error) => {
+    localStorage.clear();
     return Promise.reject(error);
   },
 );
