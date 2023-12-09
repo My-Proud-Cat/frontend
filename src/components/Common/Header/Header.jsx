@@ -16,7 +16,7 @@ function Header() {
   const [token, setToken] = useRecoilState(authState);
   const [nickname, setNickname] = useState('');
 
-  const storage = localStorage.getItem('refreshToken');
+  const storage = localStorage.getItem('accessToken');
 
   useEffect(() => {
     if (storage) {

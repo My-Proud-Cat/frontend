@@ -24,7 +24,7 @@ function WriteInput({ comment }) {
 
   const [commentField, setCommentField] = useState(null);
 
-  const storage = localStorage.getItem('refreshToken');
+  const storage = localStorage.getItem('accessToken');
   const [user, setUser] = useState(false);
 
   useEffect(() => {

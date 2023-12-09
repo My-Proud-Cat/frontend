@@ -29,7 +29,7 @@ function PictureList() {
 
   const navigate = useNavigate();
 
-  const storage = localStorage.getItem('refreshToken');
+  const storage = localStorage.getItem('aceessToken');
 
   useEffect(() => {
     if (!pictureData) return;
