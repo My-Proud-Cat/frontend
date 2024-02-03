@@ -53,13 +53,13 @@ function PictureDetail() {
 
   useEffect(() => {
     if (storage) {
-      axiosInstance
+      /* axiosInstance
         .get('http://localhost:8080/auth/user-detail')
         .then((response) => {
           if (response.data.email === email) {
             setAuth(true);
           }
-        });
+        }); */
     } else {
       setAuth(false);
     }

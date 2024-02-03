@@ -26,7 +26,10 @@ function Header() {
         .get('http://localhost:8080/auth/user-detail')
         .then((response) => {
           setNickname(response.data.nickname);
-        });
+        })
+        .catch(() => {});
+    } else {
+      // return;
     }
   }, []);
 

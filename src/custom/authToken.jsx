@@ -22,16 +22,15 @@ axiosInstance.interceptors.response.use(
       response: { status },
     } = error;
 
+    console.log(error);
+
     const originalRequest = config;
 
-    localStorage.clear();
-    location.reload();
+    // localStorage.removeItem('accessToken');
+    // location.reload();
 
     if (status === 401) {
-      const accessToken = localStorage.getItem('accessToken');
-      const refreshToken = localStorage.getItem('refreshToken');
-
-      console.log('401 에러입니다');
+      console.log('토큰 만료');
 
       /* try {
         const { data } = await axios.post(
@@ -65,11 +64,10 @@ axiosInstance.interceptors.request.use(
     request.headers['Authorization'] = `Bearer ${localStorage.getItem(
       'accessToken',
     )}`;
-
     return request;
   },
   (error) => {
-    localStorage.clear();
+    console.log(error);
     return Promise.reject(error);
   },
 );

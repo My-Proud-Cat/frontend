@@ -35,25 +35,19 @@ const LoginInput = () => {
         if (response.data.accessToken && response.data.refreshToken) {
           localStorage.setItem('accessToken', response.data.accessToken);
           localStorage.setItem('refreshToken', response.data.refreshToken);
-
-          axios.defaults.headers.common[
-            'Authorization'
-          ] = `Bearer ${response.data.accessToken}`;
         }
 
-        if (response.status === 200) {
+        /* if (response.status === 200) {
           axiosInstance
             .get('http://localhost:8080/auth/user-detail')
-            .then((response) => {});
-        }
+            .then(() => {});
+        } */
       })
       .then(() => {
         navigate('/');
         location.reload();
       })
       .catch((err) => {
-        console.error(err);
-
         if (err.response.status === 400) {
           alert(err.response.data.message);
         }

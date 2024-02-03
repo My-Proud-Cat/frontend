@@ -31,11 +31,6 @@ function PictureList() {
 
   const storage = localStorage.getItem('aceessToken');
 
-  useEffect(() => {
-    if (!pictureData) return;
-    setPosts(pictureData);
-  }, [pictureData]);
-
   const onCLickWriteButton = () => {
     if (storage) {
       navigate('/write');
@@ -43,6 +38,11 @@ function PictureList() {
       alert('로그인 후 이용 가능합니다');
     }
   };
+
+  useEffect(() => {
+    if (!pictureData) return;
+    setPosts(pictureData);
+  }, [pictureData]);
 
   /* ----------------------------------- 정렬 ----------------------------------- */
 
