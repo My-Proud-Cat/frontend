@@ -29,7 +29,7 @@ function PictureList() {
 
   const navigate = useNavigate();
 
-  const storage = localStorage.getItem('aceessToken');
+  const storage = localStorage.getItem('accessToken');
 
   const onCLickWriteButton = () => {
     if (storage) {
