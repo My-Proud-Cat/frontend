@@ -28,8 +28,6 @@ function Header() {
           setNickname(response.data.nickname);
         })
         .catch(() => {});
-    } else {
-      // return;
     }
   }, []);
 
@@ -55,7 +53,7 @@ function Header() {
 
         {token === true ? (
           <div className={styles.category}>
-            <LinkHover to="/">{nickname}</LinkHover>
+            <LinkHover to="/mypage">{nickname}</LinkHover>
             <LinkHover
               to="/"
               onClick={() => {
