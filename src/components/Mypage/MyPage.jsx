@@ -1,7 +1,14 @@
 import Pagination from 'components/Common/Pagination/Pagination';
 import styles from './MyPage.module.css';
+import { useNavigate } from 'react-router-dom';
 
 const MyPage = () => {
+  const navigate = useNavigate();
+
+  const onClickUpdateButton = () => {
+    navigate('/update');
+  };
+
   return (
     <div className={styles.layout}>
       <div className={styles.layout2}>
@@ -28,6 +35,14 @@ const MyPage = () => {
             </div>
           </div>
         </div>
+
+        <button
+          onClick={() => {
+            onClickUpdateButton();
+          }}
+        >
+          수정
+        </button>
 
         <div className={styles.record}>
           <div className={styles.post_layout}>
