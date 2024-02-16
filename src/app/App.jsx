@@ -7,7 +7,7 @@ import SignUp from 'components/SignUpPage/SignUp';
 import PicturePage from 'pages/PicturePage';
 import PictureWirte from 'components/PicturePage/PictureWrite/PictureWirte';
 import PictureDetail from 'components/PicturePage/PictureDetail/PictureDetail';
-import MyPage from 'components/Mypage/MyPage';
+import MyPage from 'components/MyPage/MyPage';
 
 function App() {
   return (
