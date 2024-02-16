@@ -8,6 +8,7 @@ import PicturePage from 'pages/PicturePage';
 import PictureWirte from 'components/PicturePage/PictureWrite/PictureWirte';
 import PictureDetail from 'components/PicturePage/PictureDetail/PictureDetail';
 import MyPage from 'components/MyPage/MyPage';
+import MyPageUpdate from 'components/MyPage/MyPageUpdate/MyPageUpdate';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/:id" element={<PictureDetail />} />
 
           <Route path="/mypage" element={<MyPage />} />
+          <Route path="/update" element={<MyPageUpdate />} />
         </Routes>
       </Suspense>
     </div>
