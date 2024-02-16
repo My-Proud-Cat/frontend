@@ -8,6 +8,12 @@
   max-width: 1024px;
 }
 
+.title {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 40px;
+}
+
 .info_layout1 {
   display: flex;
   justify-content: space-between;
@@ -16,12 +22,6 @@
 .info_layout2 {
   display: flex;
   align-items: center;
-}
-
-.title {
-  font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 40px;
 }
 
 .profile_img {
