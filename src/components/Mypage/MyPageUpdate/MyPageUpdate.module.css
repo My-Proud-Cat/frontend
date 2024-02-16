@@ -1,0 +1,102 @@
+.layout {
+  padding: 40px 0;
+  border-top: var(--gray-200) solid 1px;
+}
+
+.layout2 {
+  margin: 0 auto;
+  max-width: 1024px;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 40px;
+}
+
+.table {
+  border-top: var(--gray-300) solid 1px;
+  border-bottom: var(--gray-300) solid 1px;
+  width: 1024px;
+}
+
+tbody tr th {
+  width: 180px;
+  font-weight: bold;
+  border-right: var(--gray-300) solid 1px;
+  font-size: 14px;
+}
+
+tbody tr td {
+  padding: 35px;
+  font-size: 14px;
+}
+
+.profile_img {
+  width: 180px;
+  height: 180px;
+  margin-bottom: 10px;
+}
+
+.profile_button {
+  display: flex;
+  gap: 10px;
+}
+
+.profile_button button {
+  background-color: transparent;
+  border: var(--gray-300) solid 1px;
+  padding: 7px;
+  font-size: 12px;
+  border-radius: 5px;
+}
+
+.line {
+  border-bottom: var(--gray-300) solid 1px;
+}
+
+.info_layout {
+  display: flex;
+}
+
+.info {
+  display: flex;
+  flex-flow: column;
+  width: 300px;
+  gap: 10px;
+}
+
+.info div p {
+  font-weight: bold;
+}
+
+.nickname {
+  display: flex;
+  gap: 10px;
+}
+
+.cat_check {
+  display: flex;
+  gap: 10px;
+}
+
+.sumbit {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  gap: 10px;
+}
+
+.sumbit button {
+  background-color: transparent;
+  border: var(--gray-300) solid 1px;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 5px;
+  width: 60px;
+}
+
+.sumbit button:first-child:hover {
+  background-color: var(--primary);
+  color: white;
+}
