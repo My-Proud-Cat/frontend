@@ -1,5 +1,6 @@
-import { useNavigate } from 'react-router-dom';
 import styles from './MyPageUpdate.module.css';
+import { useNavigate } from 'react-router-dom';
+import SubmitButton from 'components/Common/SubmitButton/SubmitButton';
 
 const MyPageUpdate = () => {
   const navigate = useNavigate();
@@ -72,10 +73,7 @@ const MyPageUpdate = () => {
               </tbody>
             </table>
 
-            <div className={styles.sumbit}>
-              <button name="update">수정</button>
-              <button name="cancel">취소</button>
-            </div>
+            <SubmitButton category="수정" />
           </form>
         </div>
       </div>

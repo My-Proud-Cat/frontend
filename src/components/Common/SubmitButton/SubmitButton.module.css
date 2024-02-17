@@ -23,13 +23,29 @@
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
+  gap: 10px;
 }
 
 .submitButton {
-  width: 260px;
+  width: 60px;
   height: 40px;
-  border: none;
+  border: var(--gray-300) solid 1px;
   border-radius: 5px;
+  background-color: transparent;
+  font-size: 14px;
+}
+
+.submitButton:hover {
   background-color: var(--primary);
   color: white;
+  border: none;
+}
+
+.cancelButton {
+  width: 60px;
+  height: 40px;
+  border: var(--gray-300) solid 1px;
+  border-radius: 5px;
+  background-color: transparent;
+  font-size: 14px;
 }
