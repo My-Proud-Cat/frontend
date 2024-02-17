@@ -84,7 +84,7 @@ const LoginInput = () => {
           <input
             className={styles.input}
             id="pw"
-            type="text"
+            type="password"
             placeholder="비밀번호 입력"
             onChange={() => {
               onChangePassword(event);
