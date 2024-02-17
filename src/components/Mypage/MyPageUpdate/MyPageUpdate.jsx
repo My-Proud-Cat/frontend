@@ -5,6 +5,10 @@ import SubmitButton from 'components/Common/SubmitButton/SubmitButton';
 const MyPageUpdate = () => {
   const navigate = useNavigate();
 
+  const onClickCancelButton = () => {
+    navigate('/mypage');
+  };
+
   return (
     <div className={styles.layout}>
       <div className={styles.layout2}>
@@ -103,7 +107,12 @@ const MyPageUpdate = () => {
             </tbody>
           </table>
 
-          <SubmitButton category="수정" />
+          <SubmitButton
+            category="수정"
+            onClick={() => {
+              onClickCancelButton();
+            }}
+          />
         </form>
       </div>
     </div>
