@@ -18,6 +18,7 @@
   border-top: var(--gray-300) solid 1px;
   border-bottom: var(--gray-300) solid 1px;
   width: 1024px;
+  margin-bottom: 40px;
 }
 
 tbody tr th {
@@ -78,25 +79,4 @@ tbody tr td {
 .cat_check {
   display: flex;
   gap: 10px;
-}
-
-.sumbit {
-  display: flex;
-  justify-content: center;
-  margin-top: 40px;
-  gap: 10px;
-}
-
-.sumbit button {
-  background-color: transparent;
-  border: var(--gray-300) solid 1px;
-  padding: 10px;
-  font-size: 14px;
-  border-radius: 5px;
-  width: 60px;
-}
-
-.sumbit button:first-child:hover {
-  background-color: var(--primary);
-  color: white;
 }
