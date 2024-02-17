@@ -65,7 +65,7 @@ const SignInput = () => {
       alert('양식에 맞게 입력해주세요');
     } else {
       await axios
-        .post('http://localhost:8080/auth/sign-up', userData)
+        .post('http://localhost:8080/users/sign-up', userData)
         .then(() => {
           alert('회원가입이 완료되었습니다!');
 
