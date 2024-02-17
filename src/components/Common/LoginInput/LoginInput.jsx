@@ -29,7 +29,7 @@ const LoginInput = () => {
   };
 
   const onClickLoginButton = async () => {
-    await axiosInstance
+    await axios
       .post('http://localhost:8080/auth/login', userData)
       .then((response) => {
         if (response.data.accessToken && response.data.refreshToken) {
@@ -48,6 +48,8 @@ const LoginInput = () => {
         location.reload();
       })
       .catch((err) => {
+        console.error(err);
+
         if (err.response.status === 400) {
           alert(err.response.data.message);
         }
