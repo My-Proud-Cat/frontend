@@ -10,7 +10,7 @@
 
 .title {
   font-size: 22px;
-  font-weight: 600;
+  font-weight: bold;
   margin-bottom: 40px;
 }
 
@@ -62,41 +62,4 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
-}
-
-.post_layout {
-  margin-top: 70px;
-  width: 485px;
-}
-
-.post_title {
-  margin-bottom: 40px;
-  font-size: 18px;
-}
-
-.post_group {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  font-size: 14px;
-  margin-bottom: 23px;
-}
-
-.post::after {
-  content: '';
-  border: var(--gray-200) solid 1px;
-  position: absolute;
-  width: 485px;
-  left: 0;
-  bottom: -13px;
-}
-
-.post {
-}
-
-.date {
-}
-
-.pagination {
-  display: flex;
 }
