@@ -18,6 +18,9 @@ function SubmitButton({ category, comment, ...restProps }) {
           <button className={styles.submitButton} type="submit" {...restProps}>
             {category}
           </button>
+          <button className={styles.cancelButton} type="button" {...restProps}>
+            취소
+          </button>
         </div>
       )}
     </>
