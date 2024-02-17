@@ -33,6 +33,12 @@ tbody tr td {
   font-size: 14px;
 }
 
+/* --------------------------------- 프로필 사진 --------------------------------- */
+
+.line {
+  border-bottom: var(--gray-300) solid 1px;
+}
+
 .profile_img {
   width: 180px;
   height: 180px;
@@ -50,10 +56,6 @@ tbody tr td {
   padding: 7px;
   font-size: 12px;
   border-radius: 5px;
-}
-
-.line {
-  border-bottom: var(--gray-300) solid 1px;
 }
 
 .info_layout {
@@ -74,9 +76,81 @@ tbody tr td {
 .nickname {
   display: flex;
   gap: 10px;
+  align-items: center;
+}
+
+.nickname input {
+  border: var(--gray-300) solid 1px;
+  height: 15px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.nickname input:focus {
+  outline: none;
+  border-color: var(--primary);
 }
 
 .cat_check {
   display: flex;
   gap: 10px;
+}
+
+.cat_check input {
+  margin-right: -5px;
+}
+
+.cat_check input:checked {
+  accent-color: var(--primary);
+}
+
+/* ---------------------------------- 정보 수정 --------------------------------- */
+
+.info_detail {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 10px;
+}
+
+.cat_info {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.cat_info p {
+  font-weight: bold;
+}
+
+.cat_info input {
+  border: var(--gray-300) solid 1px;
+  height: 15px;
+  padding: 5px;
+  font-size: 14px;
+  border-radius: 5px;
+}
+
+.cat_info input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.cat_info input[name='gender'] {
+  margin-right: -5px;
+}
+
+.cat_info input[name='gender']:checked {
+  accent-color: var(--primary);
+}
+
+.cat_info select {
+  padding: 2px;
+  text-align: center;
+  border: var(--gray-300) solid 1px;
+  border-radius: 5px;
+}
+
+.cat_info select:focus {
+  outline: none;
+  border-color: var(--primary);
 }
