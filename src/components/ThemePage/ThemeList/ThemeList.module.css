@@ -1,0 +1,49 @@
+.layout {
+  margin: 0 auto;
+  max-width: 1024px;
+  padding: 40px 0;
+}
+
+.position {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: end;
+  position: relative;
+  width: 1024px;
+}
+
+.writeButton {
+  background-color: transparent;
+  border: none;
+  border-top: 1px solid var(--gray-300);
+  border-left: 1px solid var(--gray-300);
+  border-right: 1px solid var(--gray-300);
+  border-radius: 5px 5px 0 0;
+  padding: 10px;
+  margin-left: 20px;
+  font-size: 14px;
+}
+
+.writeButton:hover {
+  background-color: var(--primary);
+  color: white;
+}
+
+.line::after {
+  content: '';
+  border: 1px solid var(--gray-200);
+  width: 1024px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+}
+
+.post {
+  margin: 0 auto;
+  column-gap: 45px;
+  max-width: 1024px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
