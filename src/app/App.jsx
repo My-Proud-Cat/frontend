@@ -9,6 +9,9 @@ import PictureWirte from 'components/PicturePage/PictureWrite/PictureWirte';
 import PictureDetail from 'components/PicturePage/PictureDetail/PictureDetail';
 import MyPage from 'components/MyPage/MyPage';
 import MyPageUpdate from 'components/MyPage/MyPageUpdate/MyPageUpdate';
+import ThemePage from 'pages/ThemePage';
+import ThemeWrite from 'components/ThemePage/ThemeWrite/ThemeWrite';
+import ThemeDetail from 'components/ThemePage/ThemeDetail/ThemeDeatils';
 
 function App() {
   return (
@@ -23,6 +26,10 @@ function App() {
           <Route path="/" element={<PicturePage />} />
           <Route path="/write" element={<PictureWirte />} />
           <Route path="/:id" element={<PictureDetail />} />
+
+          <Route path="/theme" element={<ThemePage />} />
+          {/* <Route path="/write" element={<ThemeWrite />} /> */}
+          <Route path="/:id" element={<ThemeDetail />} />
 
           <Route path="/mypage" element={<MyPage />} />
           <Route path="/update" element={<MyPageUpdate />} />
