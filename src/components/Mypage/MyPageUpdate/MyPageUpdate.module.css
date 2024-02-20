@@ -26,6 +26,7 @@ tbody tr th {
   font-weight: bold;
   border-right: var(--gray-300) solid 1px;
   font-size: 14px;
+  text-align: start;
 }
 
 tbody tr td {
@@ -128,6 +129,10 @@ tbody tr td {
   padding: 5px;
   font-size: 14px;
   border-radius: 5px;
+}
+
+.cat_info input[type='text'] {
+  width: 100px;
 }
 
 .cat_info input:focus {

@@ -11,6 +11,7 @@ import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { axiosInstance } from 'custom/authToken';
 import useInput from 'custom/useInput';
+import axios from 'axios';
 
 function PictureDetail() {
   const {
@@ -36,7 +37,7 @@ function PictureDetail() {
   const [imageUrl, setImageUrl] = useState('');
 
   useEffect(() => {
-    axiosInstance
+    axios
       .get(`http://localhost:8080/proudcat/api/image-file-path/${id}`, {
         responseType: 'arraybuffer',
       })
@@ -53,13 +54,13 @@ function PictureDetail() {
 
   useEffect(() => {
     if (storage) {
-      /* axiosInstance
+      axiosInstance
         .get('http://localhost:8080/auth/user-detail')
         .then((response) => {
           if (response.data.email === email) {
             setAuth(true);
           }
-        }); */
+        });
     } else {
       setAuth(false);
     }

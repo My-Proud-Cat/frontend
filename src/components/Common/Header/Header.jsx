@@ -25,17 +25,23 @@ function Header() {
       axiosInstance
         .get('http://localhost:8080/auth/user-detail')
         .then((response) => {
-          setNickname(response.data.nickname);
+          console.log(response);
+          setNickname(response.data);
         })
         .catch(() => {});
     }
   }, []);
 
   const onClickLogoutButton = async () => {
-    axiosInstance.get('http://localhost:8080/auth/logout').then((response) => {
-      localStorage.clear();
-      location.reload();
-    });
+    axiosInstance
+      .get('http://localhost:8080/auth/logout')
+      .then(() => {
+        localStorage.clear();
+        location.reload();
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   };
 
   return (

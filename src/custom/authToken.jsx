@@ -22,7 +22,7 @@ axiosInstance.interceptors.request.use(
       'accessToken',
     )}`;
 
-    console.log(request);
+    // console.log(request);
     return request;
   },
   (error) => {
