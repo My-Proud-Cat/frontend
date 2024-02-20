@@ -53,7 +53,7 @@ function Header() {
       <div className={styles.nav}>
         <div className={styles.category}>
           <LinkHover to="/">인생샷</LinkHover>
-          <LinkHover to="/">테마샷</LinkHover>
+          <LinkHover to="/theme">테마샷</LinkHover>
           <LinkHover to="/">유기묘 후원</LinkHover>
         </div>
 
