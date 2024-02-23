@@ -1,9 +1,18 @@
 import styles from './MyPageUpdate.module.css';
 import { useNavigate } from 'react-router-dom';
 import SubmitButton from 'components/Common/SubmitButton/SubmitButton';
+import { useRef } from 'react';
 
 const MyPageUpdate = () => {
   const navigate = useNavigate();
+
+  const changeImgRef = useRef();
+
+  const onClickFileInput = () => {
+    changeImgRef.current.click();
+  };
+
+  const onClickDeleteButton = () => {};
 
   const onClickCancelButton = () => {
     navigate('/mypage');
@@ -25,8 +34,31 @@ const MyPageUpdate = () => {
                     <img src="" alt="" className={styles.profile_img} />
 
                     <div className={styles.profile_button}>
-                      <button name="change">사진변경</button>
-                      <button name="delete">삭제</button>
+                      <button
+                        name="change"
+                        onClick={() => {
+                          onClickFileInput();
+                        }}
+                      >
+                        사진변경
+                      </button>
+
+                      <input
+                        id="file"
+                        type="file"
+                        accept="image/jpg, image/jpeg, image/png"
+                        ref={changeImgRef}
+                        className={styles.change_img}
+                      />
+
+                      <button
+                        name="delete"
+                        onClick={() => {
+                          onClickDeleteButton();
+                        }}
+                      >
+                        삭제
+                      </button>
                     </div>
                   </div>
                 </td>
@@ -73,32 +105,32 @@ const MyPageUpdate = () => {
                       <p>고양이 나이</p>
                       <select name="age">
                         <option value="unknown">모름</option>
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                        <option value="13">13</option>
-                        <option value="14">14</option>
-                        <option value="15">15</option>
-                        <option value="16">16</option>
-                        <option value="17">17</option>
-                        <option value="18">18</option>
-                        <option value="19">19</option>
-                        <option value="20">20</option>
-                        <option value="21">21</option>
-                        <option value="22">22</option>
-                        <option value="23">23</option>
-                        <option value="24">24</option>
-                        <option value="25">25</option>
+                        <option value="0">1살 미만</option>
+                        <option value="1">1살</option>
+                        <option value="2">2살</option>
+                        <option value="3">3살</option>
+                        <option value="4">4살</option>
+                        <option value="5">5살</option>
+                        <option value="6">6살</option>
+                        <option value="7">7살</option>
+                        <option value="8">8살</option>
+                        <option value="9">9살</option>
+                        <option value="10">10살</option>
+                        <option value="11">11살</option>
+                        <option value="12">12살</option>
+                        <option value="13">13살</option>
+                        <option value="14">14살</option>
+                        <option value="15">15살</option>
+                        <option value="16">16살</option>
+                        <option value="17">17살</option>
+                        <option value="18">18살</option>
+                        <option value="19">19살</option>
+                        <option value="20">20살</option>
+                        <option value="21">21살</option>
+                        <option value="22">22살</option>
+                        <option value="23">23살</option>
+                        <option value="24">24살</option>
+                        <option value="25">25살</option>
                       </select>
                     </div>
                   </div>
