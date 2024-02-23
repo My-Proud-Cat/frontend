@@ -12,10 +12,12 @@ import MyPageUpdate from 'components/MyPage/MyPageUpdate/MyPageUpdate';
 import ThemePage from 'pages/ThemePage';
 import ThemeWrite from 'components/ThemePage/ThemeWrite/ThemeWrite';
 import ThemeDetail from 'components/ThemePage/ThemeDetail/ThemeDeatils';
+import Popup from 'components/Popup/Popup';
 
 function App() {
   return (
     <div className={styles.App}>
+      <Popup />
       <Header />
 
       <Suspense fallback={<div>Loading...</div>}>
