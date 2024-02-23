@@ -33,7 +33,7 @@ function Header() {
   }, []);
 
   const onClickLogoutButton = async () => {
-    axiosInstance
+    await axiosInstance
       .get('http://localhost:8080/auth/logout')
       .then(() => {
         localStorage.clear();
