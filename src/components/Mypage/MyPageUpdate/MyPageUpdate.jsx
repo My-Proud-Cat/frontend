@@ -1,11 +1,11 @@
 import styles from './MyPageUpdate.module.css';
-import { useNavigate } from 'react-router-dom';
 import SubmitButton from 'components/Common/SubmitButton/SubmitButton';
+import { useNavigate } from 'react-router-dom';
 import { useRef } from 'react';
+import { axiosInstance } from 'custom/authToken';
 
 const MyPageUpdate = () => {
   const navigate = useNavigate();
-
   const changeImgRef = useRef();
 
   const onClickFileInput = () => {
@@ -13,6 +13,10 @@ const MyPageUpdate = () => {
   };
 
   const onClickDeleteButton = () => {};
+
+  const onClickChangeButton = async () => {
+    // await axiosInstance.get();
+  };
 
   const onClickCancelButton = () => {
     navigate('/mypage');
@@ -23,14 +27,14 @@ const MyPageUpdate = () => {
       <div className={styles.layout2}>
         <p className={styles.title}>프로필 수정</p>
 
-        <form action="">
+        <form onSubmit={onClickChangeButton} encType="multipart/form-data">
           <table className={styles.table}>
             <tbody>
               <tr className={styles.line}>
                 <th>프로필 사진</th>
 
                 <td>
-                  <div className="">
+                  <div>
                     <img src="" alt="" className={styles.profile_img} />
 
                     <div className={styles.profile_button}>
