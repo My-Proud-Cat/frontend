@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styles from './Popup.module.css';
 
 const Popup = () => {
-  const [Popup, setPopup] = useState(true);
+  const [Popup, setPopup] = useState(false);
 
   const onClickCancelButton = () => {
     setPopup(false);
