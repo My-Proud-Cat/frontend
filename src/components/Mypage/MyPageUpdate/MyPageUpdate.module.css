@@ -59,6 +59,12 @@ tbody tr td {
   border-radius: 5px;
 }
 
+.change_img {
+  width: 1px;
+  height: 1px;
+  position: absolute;
+}
+
 .info_layout {
   display: flex;
 }
@@ -132,7 +138,7 @@ tbody tr td {
 }
 
 .cat_info input[type='text'] {
-  width: 100px;
+  width: 140px;
 }
 
 .cat_info input:focus {
