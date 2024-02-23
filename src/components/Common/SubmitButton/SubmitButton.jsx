@@ -15,7 +15,7 @@ function SubmitButton({ category, comment, ...restProps }) {
         </div>
       ) : (
         <div className={styles.layout}>
-          <button className={styles.submitButton} type="submit" {...restProps}>
+          <button className={styles.submitButton} type="submit">
             {category}
           </button>
           <button className={styles.cancelButton} type="button" {...restProps}>
