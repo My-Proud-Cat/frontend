@@ -5,16 +5,47 @@ export const axiosInstance = axios.create({
 });
 
 const postRefreshToken = async () => {
-  const response = await axiosInstance.post('auth/login', {
-    refreshToken: localStorage.getItem('refreshToken'),
-  });
+  const response = await axiosInstance.post(
+    'http://localhost:8080/auth/reissue',
+    {
+      refreshToken: localStorage.getItem('refreshToken'),
+    },
+  );
 
   return response;
 };
 
-axiosInstance.interceptors.response.use((response) => {
-  return response;
-});
+axiosInstance.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  async (error) => {
+    const originalConfig = error.config;
+    const msg = error.response.message;
+    const status = error.response.status;
+
+    if (status === 401) {
+      if (msg == 'access Token expired') {
+        const response = await postRefreshToken();
+
+        if (status === 200) {
+          const newAccessToken = response.data.token;
+          localStorage.setItem('accessToken', response.data.token);
+          localStorage.setItem('refreshToken', response.data.refreshToken);
+
+          axios.defaults.headers.common.Authorization = `Bearer ${newAccessToken}`;
+          originalConfig.headers['Authorization'] = `Bearer ${newAccessToken}}`;
+
+          return axios(originalConfig);
+        }
+      } else if (msg == 'refresh token expired') {
+        localStorage.clear();
+        alert('토큰이 만료되어 자동으로 로그아웃 되었습니다');
+      }
+    }
+    return Promise.reject(error);
+  },
+);
 
 axiosInstance.interceptors.request.use(
   (request) => {
