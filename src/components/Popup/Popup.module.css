@@ -1,0 +1,55 @@
+.layout {
+  position: relative;
+}
+
+.position {
+  background-color: white;
+  position: fixed;
+  width: 350px;
+  height: 270px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px #444;
+  text-align: center;
+  padding: 25px;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.img {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.content {
+  font-size: 14px;
+}
+
+.cancel {
+  background-color: transparent;
+  border: var(--gray-300) solid 1px;
+  border-radius: 5px;
+  width: 50px;
+  height: 30px;
+  font-size: 14px;
+  margin-top: 25px;
+}
+
+.cancel:hover {
+  border: none;
+  background-color: var(--primary);
+  color: white;
+}
