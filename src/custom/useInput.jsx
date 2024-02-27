@@ -16,9 +16,9 @@ const useInput = () => {
   const [content, setContent] = useRecoilState(contentState);
 
   /* 텍스트 지우는 함수 */
-  function clearText() {
+  const clearText = () => {
     document.getElementById('comment').value = '';
-  }
+  };
 
   /* ----------------------------------- 파일 ----------------------------------- */
 
