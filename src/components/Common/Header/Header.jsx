@@ -22,13 +22,12 @@ function Header() {
     if (storage) {
       setToken(true);
 
-      axiosInstance
+      /* axiosInstance
         .get('http://localhost:8080/auth/user-detail')
         .then((response) => {
-          // console.log(response);
-          setNickname(response.data);
+          setNickname(response.data.nickname);
         })
-        .catch(() => {});
+        .catch(() => {}); */
     }
   }, []);
 

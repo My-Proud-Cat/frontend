@@ -31,17 +31,17 @@ function AnswerEditor({ item }) {
   };
 
   useEffect(() => {
-    if (storage) {
-      /* axiosInstance
+    /* if (storage) {
+      axiosInstance
         .get('http://localhost:8080/auth/user-detail')
         .then((response) => {
           if (response.data.email === email) {
             setAuth(true);
           }
-        }); */
+        });
     } else {
       setAuth(false);
-    }
+    } */
   }, []);
 
   return (

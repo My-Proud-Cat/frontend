@@ -53,7 +53,7 @@ function PictureDetail() {
   }, []);
 
   useEffect(() => {
-    if (storage) {
+    /* if (storage) {
       axiosInstance
         .get('http://localhost:8080/auth/user-detail')
         .then((response) => {
@@ -63,7 +63,7 @@ function PictureDetail() {
         });
     } else {
       setAuth(false);
-    }
+    } */
   }, []);
 
   if (item === 'hasError') {
