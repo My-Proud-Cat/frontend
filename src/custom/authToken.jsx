@@ -21,11 +21,13 @@ axiosInstance.interceptors.response.use(
   },
   async (error) => {
     const originalConfig = error.config;
-    const msg = error.response.message;
-    const status = error.response.status;
+    const msg = error.message;
+    // const status = error.response.status;
+
+    console.log(error);
 
     if (status === 401) {
-      if (msg == 'access Token expired') {
+      if (msg == '토큰의 유효기간이 만료되었습니다') {
         const response = await postRefreshToken();
 
         if (status === 200) {
@@ -57,7 +59,7 @@ axiosInstance.interceptors.request.use(
     return request;
   },
   (error) => {
-    console.log(error);
+    // console.log(error);
     return Promise.reject(error);
   },
 );
