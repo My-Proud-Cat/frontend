@@ -3,14 +3,13 @@ import SubmitButton from 'components/Common/SubmitButton/SubmitButton';
 import { useNavigate } from 'react-router-dom';
 import { useRef } from 'react';
 import { axiosInstance } from 'custom/authToken';
+import useInput from 'custom/useInput';
 
 const MyPageUpdate = () => {
-  const navigate = useNavigate();
-  const changeImgRef = useRef();
+  const { clearText, fileInputRef, onClickFileInput, onChangeFile } =
+    useInput();
 
-  const onClickFileInput = () => {
-    changeImgRef.current.click();
-  };
+  const navigate = useNavigate();
 
   const onClickDeleteButton = () => {};
 
@@ -51,7 +50,7 @@ const MyPageUpdate = () => {
                         id="file"
                         type="file"
                         accept="image/jpg, image/jpeg, image/png"
-                        ref={changeImgRef}
+                        ref={fileInputRef}
                         className={styles.change_img}
                       />
 
