@@ -33,7 +33,6 @@ axiosInstance.interceptors.response.use(
         if (status === 200) {
           const newAccessToken = response.data.token;
           localStorage.setItem('accessToken', response.data.token);
-          localStorage.setItem('refreshToken', response.data.refreshToken);
 
           axios.defaults.headers.common.Authorization = `Bearer ${newAccessToken}`;
           originalConfig.headers['Authorization'] = `Bearer ${newAccessToken}}`;
