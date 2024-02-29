@@ -3,8 +3,6 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { emailState, passwordState } from '@store/authUserLogin';
-import { axiosInstance } from 'custom/authToken';
-import { message } from 'antd';
 
 const LoginInput = () => {
   const navigate = useNavigate();
@@ -30,11 +28,12 @@ const LoginInput = () => {
 
   const onClickLoginButton = async () => {
     await axios
-      .post('http://localhost:8080/auth/login', userData)
+      .post('http://localhost:8080/auth/login', userData, {
+        withCredentials: true,
+      })
       .then((response) => {
-        if (response.data.accessToken && response.data.refreshToken) {
-          localStorage.setItem('accessToken', response.data.accessToken);
-          localStorage.setItem('refreshToken', response.data.refreshToken);
+        if (response.data) {
+          localStorage.setItem('accessToken', response.data);
         }
 
         /* if (response.status === 200) {
